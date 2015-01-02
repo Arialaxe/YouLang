@@ -11,6 +11,6 @@ public class PrintStmt extends Stmt {
 	@Override
 	public void eval() {
 		//decoupled - sent to method in interface package - we don't do it here!
-		//TODO: call the method for printing exp.eval()
+		frontEnd.Printer.printOutput(Integer.toString(exp.eval()));
 	}
 }
