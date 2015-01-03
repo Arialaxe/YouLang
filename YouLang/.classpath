@@ -6,5 +6,15 @@
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="lib" path="/usr/lib/jvm/jdk1.8.0_25/jre/lib/ext/jfxrt.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_25"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/de.tesis.dynaware.grapheditor.api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/de.tesis.dynaware.grapheditor.core-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/de.tesis.dynaware.grapheditor.model-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/edit-2.3.0-v200706262000.jar"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/logback-classic-1.0.13.jar"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/logback-core-1.0.13.jar"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/org.eclipse.emf.common-2.9.2-v20131212-0545.jar"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/org.eclipse.emf.ecore.xmi-2.9.1-v20131212-0545.jar"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/org.eclipse.emf.ecore-2.9.2-v20131212-0545.jar"/>
+	<classpathentry kind="lib" path="/home/niallrutherford/Documents/IndividualProject/YouLang/GraphEditorDemo/libs/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

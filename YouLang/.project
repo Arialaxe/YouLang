@@ -14,16 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>grapheditor</name>
-			<type>2</type>
-			<location>/home/niallrutherford/Documents/IndividualProject/YouLang/graph-editor-master/core/src/main/java/de/tesis/dynaware/grapheditor</location>
-		</link>
-		<link>
-			<name>test</name>
-			<type>2</type>
-			<location>/home/niallrutherford/Documents/IndividualProject/YouLang/graph-editor-master/core/src/test</location>
-		</link>
-	</linkedResources>
 </projectDescription>
