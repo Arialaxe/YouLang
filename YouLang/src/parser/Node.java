@@ -1,6 +1,6 @@
 package parser;
 
-public abstract class Vertex {
+public abstract class Node {
 
 	public abstract void parse ();
 	
