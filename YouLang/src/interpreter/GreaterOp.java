@@ -1,5 +1,5 @@
 package interpreter;
 
-public class SubOp extends Op {
+public class GreaterOp extends Op {
 	//does nothing
 }
