@@ -1,18 +1,17 @@
 package parser;
 
-import org.codehaus.jparsec.Parser;
-import org.codehaus.jparsec.Scanners;
+public class DoNode extends CustomNode {
 
-public class DoNode extends Node {
-
-	public DoNode(Grammar newParent) {
-		super(newParent);
+	public DoNode(Grammar newParent, String setting) {
+		super(newParent, setting);
+		initialiseVanilla("do");
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public Parser parser() {
-		return Scanners.string("do").retn("do");
+	public boolean settingCheck(String setting) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

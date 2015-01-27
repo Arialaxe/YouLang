@@ -1,17 +1,16 @@
 package parser;
 
-import org.codehaus.jparsec.Parser;
-import org.codehaus.jparsec.Scanners;
+public class LeftBracketNode extends CustomNode {
 
-public class LeftBracketNode extends Node {
-
-	public LeftBracketNode(Grammar newParent) {
-		super(newParent);
+	public LeftBracketNode(Grammar newParent, String setting) {
+		super(newParent, setting);
+		initialiseVanilla("(");
 	}
 
 	@Override
-	public Parser parser() {
-		return Scanners.isChar('(').retn('(');
+	public boolean settingCheck(String setting) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

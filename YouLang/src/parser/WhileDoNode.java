@@ -1,27 +1,37 @@
 package parser;
 
 import org.codehaus.jparsec.Parser;
+
 import org.codehaus.jparsec.Parsers;
+import org.codehaus.jparsec.misc.*;
+import interpreter.*;
 
 public class WhileDoNode extends Node {
 
-	public WhileDoNode(Grammar newParent) {
+	Parser<String> whileParser;
+	Parser<String> expParser;
+	Parser<String> doParser;
+	Parser<String> stmtParser;
+	
+	public WhileDoNode(Grammar newParent, String whileSetting, String doSetting) {
 		super(newParent);
+		whileParser = new WhileNode(parent, whileSetting).parser();
+		expParser = new RootExp(parent).parser();
+		doParser = new DoNode(parent, doSetting).parser();
+		stmtParser = new RootStmt(parent).parser();
 	}
 
 	@Override
 	public Parser parser() {
 		//TODO: this is a completely placeholdery draft
 		
-		Parser<String> whileParser = new WhileNode(parent).parser();
-		Parser<String> expParser = new RootExp(parent).parser();
-		Parser<String> doParser = new DoNode(parent).parser();
-		Parser<String> stmtParser = new RootStmt(parent).parser();
+
 		WhileDoMap map = new WhileDoMap();
 		
-		Parser parser = Parsers.sequence(whileParser, expParser, 
+		Parser<String> parser = Parsers.sequence(whileParser, expParser, 
 				doParser, stmtParser, map);
 		
+		//Mapper.curry(interpreter.WhileStmt.class, whileParser, expParser, doParser, stmtParser)
 		
 		 //...
 		

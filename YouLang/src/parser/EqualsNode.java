@@ -1,17 +1,16 @@
 package parser;
 
-import org.codehaus.jparsec.Parser;
-import org.codehaus.jparsec.Scanners;
+public class EqualsNode extends CustomNode {
 
-public class EqualsNode extends Node {
-
-	public EqualsNode(Grammar newParent) {
-		super(newParent);
+	public EqualsNode(Grammar newParent, String setting) {
+		super(newParent, setting);
+		initialiseVanilla("=");
 	}
 
 	@Override
-	public Parser parser() {
-		return Scanners.isChar('=').retn('-');
+	public boolean settingCheck(String setting) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -1,17 +1,16 @@
 package parser;
 
-import org.codehaus.jparsec.Parser;
-import org.codehaus.jparsec.Scanners;
+public class SemiColonNode extends CustomNode {
 
-public class SemiColonNode extends Node {
-
-	public SemiColonNode(Grammar newParent) {
-		super(newParent);
+	public SemiColonNode(Grammar newParent, String setting) {
+		super(newParent, setting);
+		initialiseVanilla(";");
 	}
 
 	@Override
-	public Parser parser() {
-		return Scanners.isChar(';').retn(';');
+	public boolean settingCheck(String setting) {
+		// TODO Auto-generated method stub
+		return false;
 	}
-
+	
 }

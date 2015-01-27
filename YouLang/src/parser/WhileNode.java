@@ -1,17 +1,16 @@
 package parser;
 
-import org.codehaus.jparsec.Parser;
-import org.codehaus.jparsec.Scanners;
+public class WhileNode extends CustomNode {
 
-public class WhileNode extends Node {
-
-	public WhileNode(Grammar newParent) {
-		super(newParent);
+	public WhileNode(Grammar newParent, String setting) {
+		super(newParent, setting);
+		initialiseVanilla("while");
 	}
 
 	@Override
-	public Parser parser() {
-		return Scanners.string("while").retn("while");
+	public boolean settingCheck(String setting) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

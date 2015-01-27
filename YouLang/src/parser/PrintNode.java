@@ -1,17 +1,16 @@
 package parser;
 
-import org.codehaus.jparsec.Parser;
-import org.codehaus.jparsec.Scanners;
+public class PrintNode extends CustomNode {
 
-public class PrintNode extends Node {
-
-	public PrintNode(Grammar newParent) {
-		super(newParent);
+	public PrintNode(Grammar newParent, String setting) {
+		super(newParent, setting);
+		initialiseVanilla("print");
 	}
 
 	@Override
-	public Parser parser() {
-		return Scanners.string("print").retn("print");
+	public boolean settingCheck(String setting) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
