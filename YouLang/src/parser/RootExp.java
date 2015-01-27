@@ -1,6 +1,7 @@
 package parser;
 
 import org.codehaus.jparsec.Parser;
+import interpreter.*;
 
 public class RootExp extends Node {
 
@@ -9,7 +10,7 @@ public class RootExp extends Node {
 	}
 
 	@Override
-	public Parser parser() {
+	public Parser<Exp> parser() {
 		// TODO Auto-generated method stub
 		return null;
 	}

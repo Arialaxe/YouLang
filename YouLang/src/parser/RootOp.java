@@ -1,6 +1,7 @@
 package parser;
 
 import org.codehaus.jparsec.Parser;
+
 import org.codehaus.jparsec.Parsers;
 import org.codehaus.jparsec.Scanners;
 import interpreter.*;
@@ -21,7 +22,7 @@ public class RootOp extends Node {
 	}
 
 	@Override
-	public Parser parser() {
+	public Parser<Op> parser() {
 		// TODO Auto-generated method stub
 		return null;
 	}
