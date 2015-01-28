@@ -1,16 +1,17 @@
 package parser;
 
-public class RightBracketNode extends CustomNode {
+import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Scanners;
 
-	public RightBracketNode(Grammar newParent, String setting) {
-		super(newParent, setting);
-		initialiseVanilla(")");
+public class RightBracketNode extends Node {
+
+	public RightBracketNode(Grammar newParent) {
+		super(newParent);
 	}
 
 	@Override
-	public boolean settingCheck(String setting) {
-		// TODO Auto-generated method stub
-		return false;
+	public Parser<String> parser() {
+		return Scanners.string(parent.rightBracketSetting).retn(")");
 	}
 
 }

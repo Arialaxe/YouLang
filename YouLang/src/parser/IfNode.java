@@ -1,16 +1,17 @@
 package parser;
 
-public class IfNode extends CustomNode {
+import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Scanners;
 
-	public IfNode(Grammar newParent, String setting) {
-		super(newParent, setting);
-		initialiseVanilla("if");
+public class IfNode extends Node {
+
+	public IfNode(Grammar newParent) {
+		super(newParent);
 	}
 
 	@Override
-	public boolean settingCheck(String setting) {
-		// TODO Auto-generated method stub
-		return false;
+	public Parser<String> parser() {
+		return Scanners.string(parent.ifSetting).retn("if");
 	}
 
 }

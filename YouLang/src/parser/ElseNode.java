@@ -1,16 +1,17 @@
 package parser;
 
-public class ElseNode extends CustomNode {
+import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Scanners;
 
-	public ElseNode(Grammar newParent, String setting) {
-		super(newParent, setting);
-		initialiseVanilla("else");
+public class ElseNode extends Node {
+
+	public ElseNode(Grammar newParent) {
+		super(newParent);
 	}	
 
 	@Override
-	public boolean settingCheck(String setting) {
-		// TODO Auto-generated method stub
-		return false;
+	public Parser<String> parser() {
+		return Scanners.string(parent.elseSetting).retn("else");
 	}
 
 }

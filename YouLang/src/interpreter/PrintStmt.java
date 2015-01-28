@@ -4,6 +4,10 @@ public class PrintStmt extends Stmt {
 
 	private Exp exp;
 	
+	public PrintStmt (String printRetn, Exp expRetn) {
+		this.exp = expRetn;
+	}
+	
 	public PrintStmt (Exp exp) {
 		this.exp = exp;
 	}

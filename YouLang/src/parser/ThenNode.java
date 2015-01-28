@@ -1,16 +1,17 @@
 package parser;
 
-public class ThenNode extends CustomNode {
+import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Scanners;
 
-	public ThenNode(Grammar newParent, String setting) {
-		super(newParent, setting);
-		initialiseVanilla("then");
+public class ThenNode extends Node {
+
+	public ThenNode(Grammar newParent) {
+		super(newParent);
 	}
 
 	@Override
-	public boolean settingCheck(String setting) {
-		// TODO Auto-generated method stub
-		return false;
+	public Parser<String> parser() {
+		return Scanners.string(parent.doSetting).retn("do");
 	}
 
 }

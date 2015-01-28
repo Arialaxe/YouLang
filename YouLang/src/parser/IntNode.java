@@ -11,7 +11,7 @@ public class IntNode extends Node {
 	}
 
 	@Override
-	public Parser parser() {
+	public Parser<IntExp> parser() {
 		Parser<Integer> intScan = Scanners.INTEGER.cast();
 		return intScan.map(new IntExp());
 	}

@@ -1,7 +1,10 @@
 package parser;
 
+import interpreter.VarExp;
+
 import org.codehaus.jparsec.Parser;
 import org.codehaus.jparsec.Scanners;
+import org.codehaus.jparsec.misc.Mapper;
 
 public class VarNode extends Node {
 
@@ -10,8 +13,8 @@ public class VarNode extends Node {
 	}
 
 	@Override
-	public Parser parser() {
-		return Scanners.IDENTIFIER; //TODO: revisit this
+	public Parser<VarExp> parser() {
+		return Mapper.curry(VarExp.class).sequence(Scanners.IDENTIFIER); //TODO this isn't actually going to work at all, obviously
 	}
 
 }

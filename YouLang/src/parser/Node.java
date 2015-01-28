@@ -1,21 +1,15 @@
 package parser;
 
 import org.codehaus.jparsec.Parser;
-import interpreter.*;
 
-public abstract class Node<T> {
+public abstract class Node {
 	
 	Grammar parent;
-	String stringToParse;
 	
 	public Node (Grammar newParent) {
 		parent = newParent;
 	}
 	
-	public abstract Parser<T> parser();
-	
-	public void getStringToParse() {
-		this.stringToParse = parent.getStringToParse();
-	}
+	public abstract Parser parser();
 	
 }

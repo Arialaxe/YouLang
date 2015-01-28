@@ -1,11 +1,11 @@
 package parser;
 
-import javafx.scene.Parent;
-import interpreter.*;
+import interpreter.Exp;
+import interpreter.Op;
+import interpreter.OpAppExp;
 
 import org.codehaus.jparsec.Parser;
-import org.codehaus.jparsec.misc.*;
-import org.codehaus.jparsec.functors.*;
+import org.codehaus.jparsec.misc.Mapper;
 
 public class OpAppNode extends Node {
 
@@ -15,13 +15,13 @@ public class OpAppNode extends Node {
 	Parser<Exp> exp2Parser;
 	Parser<String> rightBracketParser;
 	
-	public OpAppNode(Grammar newParent, String leftBracketSetting, String rightBracketSetting) {
+	public OpAppNode(Grammar newParent) {
 		super(newParent);
-		leftBracketParser = new LeftBracketNode(parent, leftBracketSetting).parser();
+		leftBracketParser = new LeftBracketNode(parent).parser();
 		exp1Parser = new RootExp(parent).parser();
-		opParser = new RootOp(parent).parser();
+		opParser = new RootOp(parent).parser(); //TODO implement global definition of the settings in Grammar, from which we can take this
 		exp2Parser = new RootExp(parent).parser();
-		rightBracketParser = new RightBracketNode(parent, rightBracketSetting).parser();
+		rightBracketParser = new RightBracketNode(parent).parser();
 	}
 
 	@Override

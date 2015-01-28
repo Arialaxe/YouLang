@@ -6,6 +6,12 @@ public class OpAppExp extends Exp {
 	private Exp exp1;
 	private Exp exp2;
 	
+	public OpAppExp (String leftBracketRetn, Exp exp1Retn, Op opRetn, Exp exp2Retn, String rightBracketRetn) {
+		this.op = opRetn;
+		this.exp1 = exp1Retn;
+		this.exp2 = exp2Retn;
+	}
+	
 	public OpAppExp (Op op, Exp exp1, Exp exp2) {
 		this.op = op;
 		this.exp1 = exp1;

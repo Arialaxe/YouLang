@@ -11,9 +11,9 @@ public class PrintStmtNode extends Node {
 	Parser<String> printParser;
 	Parser<Exp> expParser;
 	
-	public PrintStmtNode(Grammar newParent, String printSetting) {
+	public PrintStmtNode(Grammar newParent) {
 		super(newParent);
-		printParser = new PrintNode(parent, printSetting).parser();
+		printParser = new PrintNode(parent).parser();
 		expParser = new RootExp(parent).parser();
 	}
 

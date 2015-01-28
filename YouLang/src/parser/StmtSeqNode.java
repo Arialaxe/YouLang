@@ -12,10 +12,10 @@ public class StmtSeqNode extends Node {
 	Parser<String> semiColonParser;
 	Parser<Stmt> stmt2Parser;
 
-	public StmtSeqNode(Grammar newParent, String semiColonSetting) {
+	public StmtSeqNode(Grammar newParent) {
 		super(newParent);
 		stmt1Parser = new RootStmt(parent).parser();
-		semiColonParser = new SemiColonNode(parent, semiColonSetting).parser();
+		semiColonParser = new SemiColonNode(parent).parser();
 		stmt2Parser = new RootStmt(parent).parser();
 	}
 
