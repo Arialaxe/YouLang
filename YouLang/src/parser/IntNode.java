@@ -1,6 +1,7 @@
 package parser;
 
 import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Parsers;
 import org.codehaus.jparsec.Scanners;
 import org.codehaus.jparsec.misc.Mapper;
 
@@ -16,6 +17,6 @@ public class IntNode extends Node {
 	@Override
 	public Parser<IntExp> parser() {
 		//return Mapper.curry(VarExp.class).sequence(Scanners.IDENTIFIER); //TODO this defs needs testing...
-		return Mapper.curry(IntExp.class).sequence(Scanners.INTEGER);
+		return Parsers.sequence(ignored, Mapper.curry(IntExp.class).sequence(Scanners.INTEGER));
 	}
 }
