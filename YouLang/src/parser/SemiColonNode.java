@@ -11,7 +11,7 @@ public class SemiColonNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.semiColonSetting).retn(";");
+		return Scanners.string(parent.getSemiColonSetting()).retn(";");
 	}
 	
 }

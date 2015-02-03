@@ -11,7 +11,7 @@ public class EqualsNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.equalsSetting).retn("=");
+		return Scanners.string(parent.getEqualsSetting()).retn("=");
 	}
 
 }

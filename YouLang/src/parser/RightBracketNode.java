@@ -11,7 +11,7 @@ public class RightBracketNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.rightBracketSetting).retn(")");
+		return Scanners.string(parent.getRightBracketSetting()).retn(")");
 	}
 
 }

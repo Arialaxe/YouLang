@@ -11,7 +11,7 @@ public class ThenNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.doSetting).retn("do");
+		return Scanners.string(parent.getDoSetting()).retn("do");
 	}
 
 }

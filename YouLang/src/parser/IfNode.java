@@ -11,7 +11,7 @@ public class IfNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.ifSetting).retn("if");
+		return Scanners.string(parent.getIfSetting()).retn("if");
 	}
 
 }

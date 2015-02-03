@@ -11,7 +11,7 @@ public class ElseNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.elseSetting).retn("else");
+		return Scanners.string(parent.getElseSetting()).retn("else");
 	}
 
 }

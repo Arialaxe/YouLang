@@ -11,7 +11,7 @@ public class WhileNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.whileSetting).retn("while");
+		return Scanners.string(parent.getWhileSetting()).retn("while");
 	}
 
 }

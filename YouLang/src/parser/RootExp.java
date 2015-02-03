@@ -9,18 +9,19 @@ public class RootExp extends Node {
 
 	Parser<IntExp> intParser;
 	Parser<VarExp> varParser;
-	Parser<OpAppExp> opAppParser;
+	//Parser<OpAppExp> opAppParser;
 	
 	public RootExp(Grammar newParent) {
 		super(newParent);
 		intParser = new IntNode(parent).parser();
 		varParser = new VarNode(parent).parser();
-		opAppParser = new OpAppNode(parent).parser();
+		//opAppParser = new OpAppNode(parent).parser();
 	}
 
 	@Override
 	public Parser<Exp> parser() {
-		return Parsers.or(intParser, varParser, opAppParser);
+		return Parsers.or(intParser, varParser);
+		//return Parsers.or(intParser, varParser, opAppParser);
 	}
 
 }

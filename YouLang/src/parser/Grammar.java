@@ -7,21 +7,22 @@ import java.util.Vector;
 public class Grammar {
 
 	private String stringToParse;
-	protected String plusOpSetting;
-	protected String subOpSetting;
-	protected String mulOpSetting;
-	protected String divOpSetting;
-	protected String greaterOpSetting;
-	protected String equalsSetting;
-	protected String semiColonSetting;
-	protected String leftBracketSetting;
-	protected String rightBracketSetting;
-	protected String ifSetting;
-	protected String thenSetting;
-	protected String elseSetting;
-	protected String whileSetting;
-	protected String doSetting;
-	protected String printSetting;
+	
+	private String plusOpSetting;
+	private String subOpSetting;
+	private String mulOpSetting;
+	private String divOpSetting;
+	private String greaterOpSetting;
+	private String equalsSetting;
+	private String semiColonSetting;
+	private String leftBracketSetting;
+	private String rightBracketSetting;
+	private String ifSetting;
+	private String thenSetting;
+	private String elseSetting;
+	private String whileSetting;
+	private String doSetting;
+	private String printSetting;
 	
 	public void parse () {
 		//TODO: uhh
@@ -33,7 +34,7 @@ public class Grammar {
 	
 	public Boolean settingCheck (String setting) {
 		//TODO 
-		return false;
+		return true;
 	}
 	
 	public Grammar (String pl, String su, String mu, String di, 
@@ -178,6 +179,145 @@ public class Grammar {
 		whileSetting = "while";
 		doSetting = "do";
 		printSetting = "print";
+	}
+
+	public String getPlusOpSetting() {
+		return plusOpSetting;
+	}
+
+	public void setPlusOpSetting(String plusOpSetting) {
+		if (settingCheck(plusOpSetting))
+		this.plusOpSetting = plusOpSetting;
+	}
+
+	public String getSubOpSetting() {
+		return subOpSetting;
+	}
+
+	public void setSubOpSetting(String subOpSetting) {
+		if (settingCheck(subOpSetting))
+		this.subOpSetting = subOpSetting;
+	}
+
+	public String getMulOpSetting() {
+		return mulOpSetting;
+	}
+
+	public void setMulOpSetting(String mulOpSetting) {
+		if (settingCheck(mulOpSetting))
+		this.mulOpSetting = mulOpSetting;
+	}
+
+	public String getDivOpSetting() {
+		return divOpSetting;
+	}
+
+	public void setDivOpSetting(String divOpSetting) {
+		if (settingCheck(divOpSetting))
+		this.divOpSetting = divOpSetting;
+	}
+
+	public String getGreaterOpSetting() {
+		return greaterOpSetting;
+	}
+
+	public void setGreaterOpSetting(String greaterOpSetting) {
+		if (settingCheck(greaterOpSetting))
+		this.greaterOpSetting = greaterOpSetting;
+	}
+
+	public String getEqualsSetting() {
+		return equalsSetting;
+	}
+
+	public void setEqualsSetting(String equalsSetting) {
+		if (settingCheck(equalsSetting))
+		this.equalsSetting = equalsSetting;
+	}
+
+	public String getSemiColonSetting() {
+		return semiColonSetting;
+	}
+
+	public void setSemiColonSetting(String semiColonSetting) {
+		if (settingCheck(semiColonSetting))
+		this.semiColonSetting = semiColonSetting;
+	}
+
+	public String getLeftBracketSetting() {
+		return leftBracketSetting;
+	}
+
+	public void setLeftBracketSetting(String leftBracketSetting) {
+		if (settingCheck(leftBracketSetting))
+		this.leftBracketSetting = leftBracketSetting;
+	}
+
+	public String getRightBracketSetting() {
+		return rightBracketSetting;
+	}
+
+	public void setRightBracketSetting(String rightBracketSetting) {
+		if (settingCheck(rightBracketSetting))
+		this.rightBracketSetting = rightBracketSetting;
+	}
+
+	public String getIfSetting() {
+		return ifSetting;
+	}
+
+	public void setIfSetting(String ifSetting) {
+		if (settingCheck(ifSetting))
+		this.ifSetting = ifSetting;
+	}
+
+	public String getThenSetting() {
+		return thenSetting;
+	}
+
+	public void setThenSetting(String thenSetting) {
+		if (settingCheck(thenSetting))
+		this.thenSetting = thenSetting;
+	}
+
+	public String getElseSetting() {
+		return elseSetting;
+	}
+
+	public void setElseSetting(String elseSetting) {
+		if (settingCheck(elseSetting))
+		this.elseSetting = elseSetting;
+	}
+
+	public String getWhileSetting() {
+		return whileSetting;
+	}
+
+	public void setWhileSetting(String whileSetting) {
+		if (settingCheck(whileSetting))
+		this.whileSetting = whileSetting;
+	}
+
+	public String getDoSetting() {
+		return doSetting;
+	}
+
+	public void setDoSetting(String doSetting) {
+		if (settingCheck(doSetting))
+		this.doSetting = doSetting;
+	}
+
+	public String getPrintSetting() {
+		return printSetting;
+	}
+
+	public void setPrintSetting(String printSetting) {
+		if (settingCheck(printSetting))
+		this.printSetting = printSetting;
+	}
+
+	public void setStringToParse(String stringToParse) {
+		this.stringToParse = stringToParse;
 	}
 	
 }

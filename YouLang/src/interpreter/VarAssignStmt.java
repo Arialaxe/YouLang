@@ -10,10 +10,6 @@ public class VarAssignStmt extends Stmt {
 		this.exp = expRetn;
 	}
 	
-	public VarAssignStmt (VarExp var, Exp exp){
-		this.var = var;
-		this.exp = exp;
-	}
 	@Override
 	public void eval(){
 		var.assign(exp.eval());

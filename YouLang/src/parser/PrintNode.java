@@ -11,7 +11,7 @@ public class PrintNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.printSetting).retn("print");
+		return Scanners.string(parent.getPrintSetting()).retn("print");
 	}
 
 }
