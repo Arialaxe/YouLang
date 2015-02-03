@@ -18,4 +18,8 @@ public class VarAssignStmt extends Stmt {
 	public void eval(){
 		var.assign(exp.eval());
 	}
+
+	public VarExp getVar() {
+		return var;
+	}
 }

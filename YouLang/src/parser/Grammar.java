@@ -1,5 +1,9 @@
 package parser;
 
+import interpreter.VarExp;
+
+import java.util.Vector;
+
 public class Grammar {
 
 	private String stringToParse;
@@ -18,6 +22,19 @@ public class Grammar {
 	protected String whileSetting;
 	protected String doSetting;
 	protected String printSetting;
+	
+	public void parse () {
+		//TODO: uhh
+	}
+
+	public String getStringToParse() {
+		return stringToParse;
+	}
+	
+	public Boolean settingCheck (String setting) {
+		//TODO 
+		return false;
+	}
 	
 	public Grammar (String pl, String su, String mu, String di, 
 			String gr, String eq, String se, String le, String ri, 
@@ -144,18 +161,23 @@ public class Grammar {
 		}
 		
 	}
-	
-	public void parse () {
-		//TODO: uhh
-	}
 
-	public String getStringToParse() {
-		return stringToParse;
-	}
-	
-	public Boolean settingCheck (String setting) {
-		//TODO 
-		return false;
+	public Grammar() { //no arguments provided -> default grammar
+		plusOpSetting = "+";
+		subOpSetting = "-";
+		mulOpSetting = "*";
+		divOpSetting = "/";
+		greaterOpSetting = ">";
+		equalsSetting = "=";
+		semiColonSetting = ";";
+		leftBracketSetting = "(";
+		rightBracketSetting = ")";
+		ifSetting = "if";
+		thenSetting = "then";
+		elseSetting = "else";
+		whileSetting = "while";
+		doSetting = "do";
+		printSetting = "print";
 	}
 	
 }
