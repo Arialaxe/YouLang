@@ -1,25 +1,16 @@
 package interpreter;
 
-import org.codehaus.jparsec.functors.Map;
-
-public class IntExp extends Exp implements Map<Integer,IntExp> {
+public class IntExp extends Exp {
 
 	private int value;
 	
-	public IntExp (int value) {
-		this.value = value;
-	}
-	public IntExp() {
-		//for purposes of Mapping
+	public IntExp (String value) { //needs to be a string for the currying to work
+		this.value = Integer.valueOf(value);
 	}
 	
 	@Override
 	public int eval(){
 		return value;
-	}
-	
-	public IntExp map(Integer arg0) {
-		return new IntExp(arg0);
 	}
 
 }
