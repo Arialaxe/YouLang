@@ -16,7 +16,6 @@ public class IntNode extends Node {
 
 	@Override
 	public Parser<IntExp> parser() {
-		//return Mapper.curry(VarExp.class).sequence(Scanners.IDENTIFIER); //TODO this defs needs testing...
 		return Parsers.sequence(ignored, Mapper.curry(IntExp.class).sequence(Scanners.INTEGER));
 	}
 }
