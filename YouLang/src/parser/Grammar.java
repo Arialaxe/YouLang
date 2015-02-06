@@ -1,8 +1,8 @@
 package parser;
 
-import interpreter.VarExp;
+import interpreter.*;
 
-import java.util.Vector;
+import org.codehaus.jparsec.Parser;
 
 public class Grammar {
 
@@ -24,8 +24,45 @@ public class Grammar {
 	private String doSetting;
 	private String printSetting;
 	
+	private Parser<IntExp> intParser = new IntNode(this).parser();
+	private Parser<VarExp> varParser = new VarNode(this).parser();
+	private Parser<PlusOp> plusOpParser = new PlusOpNode(this).parser();
+	private Parser<SubOp> subOpParser = new SubOpNode(this).parser();
+	private Parser<MulOp> mulOpParser = new MulOpNode(this).parser();
+	private Parser<DivOp> divOpParser = new DivOpNode(this).parser();
+	private Parser<GreaterOp> greaterOpParser = new GreaterOpNode(this).parser();
+	private Parser<String> leftBracketParser = new LeftBracketNode(this).parser();
+	private Parser<String> rightBracketParser = new RightBracketNode(this).parser();
+	private Parser<String> equalsParser = new EqualsNode(this).parser();
+	private Parser<String> semiColonParser = new SemiColonNode(this).parser();
+	private Parser<String> ifParser = new IfNode(this).parser();
+	private Parser<String> thenParser = new ThenNode(this).parser();
+	private Parser<String> elseParser = new ElseNode(this).parser();
+	private Parser<String> whileParser = new WhileNode(this).parser();
+	private Parser<String> doParser = new DoNode(this).parser();
+	private Parser<String> printParser = new PrintNode(this).parser();
+	
+	private Parser<Exp> expParser;
+	private Parser<Stmt> seqStmtParser;
+	private Parser<Stmt> stmtParser;
+	private Parser<Op> opParser;
+	
+	private Parser<OpAppExp> opAppParser = new OpAppNode(this, leftBracketParser, expParser, opParser, rightBracketParser).parser();
+	private Parser<VarAssignStmt> varAssignParser = new VarAssignNode(this, varParser, equalsParser, expParser).parser();
+	private Parser<Sequence> sequenceParser = new SequenceNode(this, seqStmtParser, semiColonParser, stmtParser).parser();
+	private Parser<IfStmt> ifThenElseParser = new IfThenElseNode(this, ifParser, expParser, thenParser, stmtParser, elseParser).parser();
+	private Parser<WhileStmt> whileDoParser = new WhileDoNode(this, whileParser, expParser, doParser, stmtParser).parser();
+	private Parser<PrintStmt> printStmtParser = new PrintStmtNode(this, printParser, expParser).parser();
+	
+	{
+		expParser = new RootExp(this, intParser, varParser, opAppParser).parser();
+		seqStmtParser = new SeqStmtNode(this, sequenceParser, stmtParser).parser();
+		stmtParser = new RootStmt(this, varAssignParser, seqStmtParser, ifThenElseParser, whileDoParser, printStmtParser).parser();
+		opParser = new RootOp(this, plusOpParser, subOpParser, mulOpParser, divOpParser, greaterOpParser).parser();
+	}
+
 	public void parse () {
-		//TODO: uhh
+		
 	}
 
 	public String getStringToParse() {
@@ -318,6 +355,114 @@ public class Grammar {
 
 	public void setStringToParse(String stringToParse) {
 		this.stringToParse = stringToParse;
+	}
+
+	public Parser<IntExp> getIntParser() {
+		return intParser;
+	}
+
+	public Parser<VarExp> getVarParser() {
+		return varParser;
+	}
+
+	public Parser<PlusOp> getPlusOpParser() {
+		return plusOpParser;
+	}
+
+	public Parser<SubOp> getSubOpParser() {
+		return subOpParser;
+	}
+
+	public Parser<MulOp> getMulOpParser() {
+		return mulOpParser;
+	}
+
+	public Parser<DivOp> getDivOpParser() {
+		return divOpParser;
+	}
+
+	public Parser<GreaterOp> getGreaterOpParser() {
+		return greaterOpParser;
+	}
+
+	public Parser<String> getLeftBracketParser() {
+		return leftBracketParser;
+	}
+
+	public Parser<String> getRightBracketParser() {
+		return rightBracketParser;
+	}
+
+	public Parser<String> getEqualsParser() {
+		return equalsParser;
+	}
+
+	public Parser<String> getSemiColonParser() {
+		return semiColonParser;
+	}
+
+	public Parser<String> getIfParser() {
+		return ifParser;
+	}
+
+	public Parser<String> getThenParser() {
+		return thenParser;
+	}
+
+	public Parser<String> getElseParser() {
+		return elseParser;
+	}
+
+	public Parser<String> getWhileParser() {
+		return whileParser;
+	}
+
+	public Parser<String> getDoParser() {
+		return doParser;
+	}
+
+	public Parser<String> getPrintParser() {
+		return printParser;
+	}
+
+	public Parser<Exp> getExpParser() {
+		return expParser;
+	}
+
+	public Parser<Stmt> getSeqStmtParser() {
+		return seqStmtParser;
+	}
+
+	public Parser<Stmt> getStmtParser() {
+		return stmtParser;
+	}
+
+	public Parser<Op> getOpParser() {
+		return opParser;
+	}
+
+	public Parser<OpAppExp> getOpAppParser() {
+		return opAppParser;
+	}
+
+	public Parser<VarAssignStmt> getVarAssignParser() {
+		return varAssignParser;
+	}
+
+	public Parser<Sequence> getSequenceParser() {
+		return sequenceParser;
+	}
+
+	public Parser<IfStmt> getIfThenElseParser() {
+		return ifThenElseParser;
+	}
+
+	public Parser<WhileStmt> getWhileDoParser() {
+		return whileDoParser;
+	}
+
+	public Parser<PrintStmt> getPrintStmtParser() {
+		return printStmtParser;
 	}
 	
 }
