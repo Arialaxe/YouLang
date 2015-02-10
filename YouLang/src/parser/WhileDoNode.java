@@ -1,7 +1,5 @@
 package parser;
 
-import interpreter.Exp;
-import interpreter.Stmt;
 import interpreter.WhileStmt;
 
 import org.codehaus.jparsec.Parser;
@@ -9,22 +7,23 @@ import org.codehaus.jparsec.misc.Mapper;
 
 public class WhileDoNode extends Node {
 
-	Parser<String> whileParser;
-	Parser<Exp> expParser;
-	Parser<String> doParser;
-	Parser<Stmt> stmtParser;
+	WhileNode whileNode;
+	RootExp expNode;
+	DoNode doNode;
+	RootStmt stmtNode;
 	
-	public WhileDoNode(Grammar newParent) {
+	public WhileDoNode(Grammar newParent, WhileNode whileNode, RootExp expNode, 
+							DoNode doNode, RootStmt stmtNode) {
 		super(newParent);
-		whileParser = new WhileNode(parent).parser();
-		expParser = new RootExp(parent).parser();
-		doParser = new DoNode(parent).parser();
-		stmtParser = new RootStmt(parent).parser();
+		this.whileNode = whileNode;
+		this.expNode = expNode;
+		this.doNode = doNode;
+		this.stmtNode = stmtNode;
 	}
 
 	@Override
 	public Parser<WhileStmt> parser() {
-		return Mapper.curry(WhileStmt.class).sequence(whileParser, expParser, doParser, stmtParser);
+		return Mapper.curry(WhileStmt.class).sequence(whileNode.parser(), expNode.parser(), doNode.parser(), stmtNode.parser());
 	}
 
 }

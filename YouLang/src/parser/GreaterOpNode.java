@@ -3,6 +3,7 @@ package parser;
 import interpreter.GreaterOp;
 
 import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Parsers;
 import org.codehaus.jparsec.Scanners;
 
 public class GreaterOpNode extends Node {
@@ -13,7 +14,7 @@ public class GreaterOpNode extends Node {
 
 	@Override
 	public Parser<GreaterOp> parser() {
-		return Scanners.string(parent.getGreaterOpSetting()).retn(new GreaterOp());
+		return Parsers.sequence(ignored, Scanners.string(parent.getGreaterOpSetting()).retn(new GreaterOp()));
 	}
 
 }

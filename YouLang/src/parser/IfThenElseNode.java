@@ -1,6 +1,5 @@
 package parser;
 
-import interpreter.Exp;
 import interpreter.IfStmt;
 import interpreter.Stmt;
 
@@ -9,26 +8,27 @@ import org.codehaus.jparsec.misc.Mapper;
 
 public class IfThenElseNode extends Node {
 
-	Parser<String> ifParser;
-	Parser<Exp> expParser;
-	Parser<String> thenParser;
-	Parser<Stmt> thenStmtParser;
-	Parser<String> elseParser;
-	Parser<Stmt> elseStmtParser;
+	IfNode ifNode;
+	RootExp expNode;
+	ThenNode thenNode;
+	RootStmt stmtNode;
+	ElseNode elseNode;
 	
-	public IfThenElseNode(Grammar newParent) {
+	public IfThenElseNode(Grammar newParent, IfNode ifNode, RootExp expNode, ThenNode thenNode,
+			RootStmt stmtNode, ElseNode elseNode) {
 		super(newParent);
-		Parser<String> ifParser = new IfNode(parent).parser();
-		Parser<Exp> expParser = new RootExp(parent).parser();
-		Parser<String> thenParser = new ThenNode(parent).parser();
-		Parser<Stmt> thenStmtParser = new RootStmt(parent).parser();
-		Parser<String> elseParser = new ElseNode(parent).parser();
-		Parser<Stmt> elseStmtParser = new RootStmt(parent).parser();
+		this.ifNode = ifNode;
+		this.expNode = expNode;
+		this.thenNode = thenNode;
+		this.stmtNode = stmtNode;
+		this.elseNode = elseNode;
 	}
 
 	@Override
 	public Parser<IfStmt> parser() {
-		return Mapper.curry(IfStmt.class).sequence(ifParser, expParser, thenParser, thenStmtParser, elseParser, elseStmtParser);
+		Parser<Stmt> stmtParser = stmtNode.parser();
+		return Mapper.curry(IfStmt.class).
+				sequence(ifNode.parser(), expNode.parser(), thenNode.parser(), stmtParser, elseNode.parser(), stmtParser);
 	}
 
 }

@@ -3,6 +3,7 @@ package parser;
 import interpreter.DivOp;
 
 import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Parsers;
 import org.codehaus.jparsec.Scanners;
 
 public class DivOpNode extends Node {
@@ -13,7 +14,7 @@ public class DivOpNode extends Node {
 
 	@Override
 	public Parser<DivOp> parser() {
-		return Scanners.string(parent.getDivOpSetting()).retn(new DivOp());
+		return Parsers.sequence(ignored, Scanners.string(parent.getDivOpSetting()).retn(new DivOp()));
 	}
 
 }

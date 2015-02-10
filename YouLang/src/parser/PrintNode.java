@@ -1,6 +1,7 @@
 package parser;
 
 import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Parsers;
 import org.codehaus.jparsec.Scanners;
 
 public class PrintNode extends Node {
@@ -11,7 +12,7 @@ public class PrintNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.getPrintSetting()).retn("print");
+		return Parsers.sequence(ignored, Scanners.string(parent.getPrintSetting()).retn("print"));
 	}
 
 }

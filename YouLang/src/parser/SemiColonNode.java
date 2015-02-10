@@ -1,6 +1,7 @@
 package parser;
 
 import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Parsers;
 import org.codehaus.jparsec.Scanners;
 
 public class SemiColonNode extends Node {
@@ -11,7 +12,7 @@ public class SemiColonNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Scanners.string(parent.getSemiColonSetting()).retn(";");
+		return Parsers.sequence(ignored, Scanners.string(parent.getSemiColonSetting()).retn(";"));
 	}
 	
 }

@@ -2,8 +2,6 @@ package parser;
 
 import interpreter.VarExp;
 
-import java.util.Vector;
-
 import org.codehaus.jparsec.Parser;
 import org.codehaus.jparsec.Parsers;
 import org.codehaus.jparsec.Scanners;
@@ -17,7 +15,7 @@ public class VarNode extends Node {
 
 	@Override
 	public Parser<VarExp> parser() {
-		return Parsers.sequence(ignored, Mapper.curry(VarExp.class).sequence(Scanners.IDENTIFIER)); //TODO this defs needs testing...
+		return Parsers.sequence(ignored, Mapper.curry(VarExp.class).sequence(Scanners.IDENTIFIER));
 	}
 
 }

@@ -1,6 +1,5 @@
 package parser;
 
-import interpreter.Exp;
 import interpreter.PrintStmt;
 
 import org.codehaus.jparsec.Parser;
@@ -8,18 +7,18 @@ import org.codehaus.jparsec.misc.Mapper;
 
 public class PrintStmtNode extends Node {
 
-	Parser<String> printParser;
-	Parser<Exp> expParser;
+	PrintNode printNode;
+	RootExp expNode;
 	
-	public PrintStmtNode(Grammar newParent) {
+	public PrintStmtNode(Grammar newParent, PrintNode printNode, RootExp expNode) {
 		super(newParent);
-		printParser = new PrintNode(parent).parser();
-		expParser = new RootExp(parent).parser();
+		this.printNode = printNode;
+		this.expNode = expNode;
 	}
 
 	@Override
 	public Parser<PrintStmt> parser() {
-		return Mapper.curry(PrintStmt.class).sequence(printParser, expParser);
+		return Mapper.curry(PrintStmt.class).sequence(printNode.parser(), expNode.parser());
 	}
 
 }

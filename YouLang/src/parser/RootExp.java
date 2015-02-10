@@ -7,21 +7,20 @@ import interpreter.*;
 
 public class RootExp extends Node {
 
-	Parser<IntExp> intParser;
-	Parser<VarExp> varParser;
-	Parser<OpAppExp> opAppParser;
+	IntNode intNode;
+	VarNode varNode;
+	OpAppNode opAppNode;
 	
-	public RootExp(Grammar newParent) {
+	public RootExp(Grammar newParent, IntNode intNode, VarNode varNode, OpAppNode opAppNode) {
 		super(newParent);
-		intParser = new IntNode(parent).parser();
-		varParser = new VarNode(parent).parser();
-		opAppParser = new OpAppNode(parent).parser();
+		this.intNode = intNode;
+		this.varNode = varNode;
+		this.opAppNode = opAppNode;
 	}
 
 	@Override
 	public Parser<Exp> parser() {
-		//return Parsers.or(intParser, varParser);
-		return Parsers.or(intParser, varParser, opAppParser);
+		return Parsers.or(intNode.parser(), varNode.parser(), opAppNode.parser());
 	}
 
 }

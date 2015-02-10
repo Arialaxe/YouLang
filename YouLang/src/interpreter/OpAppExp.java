@@ -12,11 +12,6 @@ public class OpAppExp extends Exp {
 		this.exp2 = exp2Retn;
 	}
 	
-	public OpAppExp (Op op, Exp exp1, Exp exp2) {
-		this.op = op;
-		this.exp1 = exp1;
-		this.exp2 = exp2;
-	}
 	@Override
 	public int eval(){
 		if (op instanceof PlusOp) {

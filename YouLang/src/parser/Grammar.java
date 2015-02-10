@@ -1,12 +1,10 @@
 package parser;
 
-import interpreter.*;
+import interpreter.Stmt;
 
 import org.codehaus.jparsec.Parser;
 
 public class Grammar {
-
-	private String stringToParse;
 	
 	private String plusOpSetting;
 	private String subOpSetting;
@@ -24,49 +22,46 @@ public class Grammar {
 	private String doSetting;
 	private String printSetting;
 	
-	private Parser<IntExp> intParser = new IntNode(this).parser();
-	private Parser<VarExp> varParser = new VarNode(this).parser();
-	private Parser<PlusOp> plusOpParser = new PlusOpNode(this).parser();
-	private Parser<SubOp> subOpParser = new SubOpNode(this).parser();
-	private Parser<MulOp> mulOpParser = new MulOpNode(this).parser();
-	private Parser<DivOp> divOpParser = new DivOpNode(this).parser();
-	private Parser<GreaterOp> greaterOpParser = new GreaterOpNode(this).parser();
-	private Parser<String> leftBracketParser = new LeftBracketNode(this).parser();
-	private Parser<String> rightBracketParser = new RightBracketNode(this).parser();
-	private Parser<String> equalsParser = new EqualsNode(this).parser();
-	private Parser<String> semiColonParser = new SemiColonNode(this).parser();
-	private Parser<String> ifParser = new IfNode(this).parser();
-	private Parser<String> thenParser = new ThenNode(this).parser();
-	private Parser<String> elseParser = new ElseNode(this).parser();
-	private Parser<String> whileParser = new WhileNode(this).parser();
-	private Parser<String> doParser = new DoNode(this).parser();
-	private Parser<String> printParser = new PrintNode(this).parser();
+	private IntNode intNode = new IntNode(this);
+	private VarNode varNode = new VarNode(this);
+	private PlusOpNode plusOpNode = new PlusOpNode(this);
+	private SubOpNode subOpNode = new SubOpNode(this);
+	private MulOpNode mulOpNode = new MulOpNode(this);
+	private DivOpNode divOpNode = new DivOpNode(this);
+	private GreaterOpNode greaterOpNode = new GreaterOpNode(this);
+	private LeftBracketNode leftBracketNode = new LeftBracketNode(this);
+	private RightBracketNode rightBracketNode = new RightBracketNode(this);
+	private EqualsNode equalsNode = new EqualsNode(this);
+	private SemiColonNode semiColonNode = new SemiColonNode(this);
+	private IfNode ifNode = new IfNode(this);
+	private ThenNode thenNode = new ThenNode(this);
+	private ElseNode elseNode = new ElseNode(this);
+	private WhileNode whileNode = new WhileNode(this);
+	private DoNode doNode = new DoNode(this);
+	private PrintNode printNode = new PrintNode(this);
 	
-	private Parser<Exp> expParser;
-	private Parser<Stmt> seqStmtParser;
-	private Parser<Stmt> stmtParser;
-	private Parser<Op> opParser;
+	private RootExp expNode;
+	private SeqStmtNode seqStmtNode;
+	private RootStmt stmtNode;
+	private RootOp opNode;
 	
-	private Parser<OpAppExp> opAppParser = new OpAppNode(this, leftBracketParser, expParser, opParser, rightBracketParser).parser();
-	private Parser<VarAssignStmt> varAssignParser = new VarAssignNode(this, varParser, equalsParser, expParser).parser();
-	private Parser<Sequence> sequenceParser = new SequenceNode(this, seqStmtParser, semiColonParser, stmtParser).parser();
-	private Parser<IfStmt> ifThenElseParser = new IfThenElseNode(this, ifParser, expParser, thenParser, stmtParser, elseParser).parser();
-	private Parser<WhileStmt> whileDoParser = new WhileDoNode(this, whileParser, expParser, doParser, stmtParser).parser();
-	private Parser<PrintStmt> printStmtParser = new PrintStmtNode(this, printParser, expParser).parser();
+	private OpAppNode opAppNode = new OpAppNode(this, leftBracketNode, expNode, opNode, rightBracketNode);
+	private VarAssignNode varAssignNode = new VarAssignNode(this, varNode, equalsNode, expNode);
+	private SequenceNode sequenceNode = new SequenceNode(this, seqStmtNode, semiColonNode, stmtNode);
+	private IfThenElseNode ifThenElseNode = new IfThenElseNode(this, ifNode, expNode, thenNode, stmtNode, elseNode);
+	private WhileDoNode whileDoNode = new WhileDoNode(this, whileNode, expNode, doNode, stmtNode);
+	private PrintStmtNode printStmtNode = new PrintStmtNode(this, printNode, expNode);
 	
 	{
-		expParser = new RootExp(this, intParser, varParser, opAppParser).parser();
-		seqStmtParser = new SeqStmtNode(this, sequenceParser, stmtParser).parser();
-		stmtParser = new RootStmt(this, varAssignParser, seqStmtParser, ifThenElseParser, whileDoParser, printStmtParser).parser();
-		opParser = new RootOp(this, plusOpParser, subOpParser, mulOpParser, divOpParser, greaterOpParser).parser();
+		expNode = new RootExp(this, intNode, varNode, opAppNode);
+		seqStmtNode = new SeqStmtNode(this, sequenceNode, stmtNode);
+		stmtNode = new RootStmt(this, varAssignNode, seqStmtNode, ifThenElseNode, whileDoNode, printStmtNode);
+		opNode = new RootOp(this, plusOpNode, subOpNode, mulOpNode, divOpNode, greaterOpNode);
 	}
 
-	public void parse () {
-		
-	}
-
-	public String getStringToParse() {
-		return stringToParse;
+	public Stmt parse (String stringToParse) {
+		Parser<Stmt> stmtParser = stmtNode.parser();
+		return stmtParser.parse(stringToParse);
 	}
 	
 	public Boolean settingCheck (String setting) {
@@ -353,116 +348,112 @@ public class Grammar {
 		this.printSetting = printSetting;
 	}
 
-	public void setStringToParse(String stringToParse) {
-		this.stringToParse = stringToParse;
+	public IntNode getIntNode() {
+		return intNode;
 	}
 
-	public Parser<IntExp> getIntParser() {
-		return intParser;
+	public VarNode getVarNode() {
+		return varNode;
 	}
 
-	public Parser<VarExp> getVarParser() {
-		return varParser;
+	public PlusOpNode getPlusOpNode() {
+		return plusOpNode;
 	}
 
-	public Parser<PlusOp> getPlusOpParser() {
-		return plusOpParser;
+	public SubOpNode getSubOpNode() {
+		return subOpNode;
 	}
 
-	public Parser<SubOp> getSubOpParser() {
-		return subOpParser;
+	public MulOpNode getMulOpNode() {
+		return mulOpNode;
 	}
 
-	public Parser<MulOp> getMulOpParser() {
-		return mulOpParser;
+	public DivOpNode getDivOpNode() {
+		return divOpNode;
 	}
 
-	public Parser<DivOp> getDivOpParser() {
-		return divOpParser;
+	public GreaterOpNode getGreaterOpNode() {
+		return greaterOpNode;
 	}
 
-	public Parser<GreaterOp> getGreaterOpParser() {
-		return greaterOpParser;
+	public LeftBracketNode getLeftBracketNode() {
+		return leftBracketNode;
 	}
 
-	public Parser<String> getLeftBracketParser() {
-		return leftBracketParser;
+	public RightBracketNode getRightBracketNode() {
+		return rightBracketNode;
 	}
 
-	public Parser<String> getRightBracketParser() {
-		return rightBracketParser;
+	public EqualsNode getEqualsNode() {
+		return equalsNode;
 	}
 
-	public Parser<String> getEqualsParser() {
-		return equalsParser;
+	public SemiColonNode getSemiColonNode() {
+		return semiColonNode;
 	}
 
-	public Parser<String> getSemiColonParser() {
-		return semiColonParser;
+	public IfNode getIfNode() {
+		return ifNode;
 	}
 
-	public Parser<String> getIfParser() {
-		return ifParser;
+	public ThenNode getThenNode() {
+		return thenNode;
 	}
 
-	public Parser<String> getThenParser() {
-		return thenParser;
+	public ElseNode getElseNode() {
+		return elseNode;
 	}
 
-	public Parser<String> getElseParser() {
-		return elseParser;
+	public WhileNode getWhileNode() {
+		return whileNode;
 	}
 
-	public Parser<String> getWhileParser() {
-		return whileParser;
+	public DoNode getDoNode() {
+		return doNode;
 	}
 
-	public Parser<String> getDoParser() {
-		return doParser;
+	public PrintNode getPrintNode() {
+		return printNode;
 	}
 
-	public Parser<String> getPrintParser() {
-		return printParser;
+	public RootExp getExpNode() {
+		return expNode;
 	}
 
-	public Parser<Exp> getExpParser() {
-		return expParser;
+	public SeqStmtNode getSeqStmtNode() {
+		return seqStmtNode;
 	}
 
-	public Parser<Stmt> getSeqStmtParser() {
-		return seqStmtParser;
+	public RootStmt getStmtNode() {
+		return stmtNode;
 	}
 
-	public Parser<Stmt> getStmtParser() {
-		return stmtParser;
+	public RootOp getOpNode() {
+		return opNode;
 	}
 
-	public Parser<Op> getOpParser() {
-		return opParser;
+	public OpAppNode getOpAppNode() {
+		return opAppNode;
 	}
 
-	public Parser<OpAppExp> getOpAppParser() {
-		return opAppParser;
+	public VarAssignNode getVarAssignNode() {
+		return varAssignNode;
 	}
 
-	public Parser<VarAssignStmt> getVarAssignParser() {
-		return varAssignParser;
+	public SequenceNode getSequenceNode() {
+		return sequenceNode;
 	}
 
-	public Parser<Sequence> getSequenceParser() {
-		return sequenceParser;
+	public IfThenElseNode getIfThenElseNode() {
+		return ifThenElseNode;
 	}
 
-	public Parser<IfStmt> getIfThenElseParser() {
-		return ifThenElseParser;
+	public WhileDoNode getWhileDoNode() {
+		return whileDoNode;
 	}
 
-	public Parser<WhileStmt> getWhileDoParser() {
-		return whileDoParser;
+	public PrintStmtNode getPrintStmtNode() {
+		return printStmtNode;
 	}
 
-	public Parser<PrintStmt> getPrintStmtParser() {
-		return printStmtParser;
-	}
-	
 }

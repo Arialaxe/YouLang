@@ -9,11 +9,7 @@ public class VarExp extends Exp {
 		this.varID = idRetn;
 		this.value = new IntExp("0"); //TODO this is just a default thing so it doesn't complain
 	}
-	
-	/*public VarExp (String varID, IntExp value) {
-		this.varID = varID; //I need to do safety checks here
-		this.value = value;
-	}*/
+
 	@Override
 	public int eval(){
 		return value.eval();

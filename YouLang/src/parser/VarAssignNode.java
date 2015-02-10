@@ -1,28 +1,26 @@
 package parser;
 
-import interpreter.Exp;
 import interpreter.VarAssignStmt;
-import interpreter.VarExp;
 
 import org.codehaus.jparsec.Parser;
 import org.codehaus.jparsec.misc.Mapper;
 
 public class VarAssignNode extends Node {
 	
-	Parser<VarExp> varParser;
-	Parser<String> equalsParser;
-	Parser<Exp> expParser;
+	VarNode varNode;
+	EqualsNode equalsNode;
+	RootExp expNode;
 
-	public VarAssignNode(Grammar newParent) {
+	public VarAssignNode(Grammar newParent, VarNode varNode, EqualsNode equalsNode, RootExp expNode) {
 		super(newParent);
-		varParser = new VarNode(parent).parser();
-		equalsParser = new EqualsNode(parent).parser();
-		expParser = new RootExp(parent).parser();
+		this.varNode = varNode;
+		this.equalsNode = equalsNode;
+		this.expNode = expNode;
 	}
 
 	@Override
 	public Parser<VarAssignStmt> parser() {
-		return Mapper.curry(VarAssignStmt.class).sequence(varParser, equalsParser, expParser);
+		return Mapper.curry(VarAssignStmt.class).sequence(varNode.parser(), equalsNode.parser(), expNode.parser());
 	}
 
 }

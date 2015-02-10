@@ -7,11 +7,11 @@ import interpreter.VarAssignStmt;
 import interpreter.VarExp;
 
 import org.codehaus.jparsec.Parser;
-import org.codehaus.jparsec.Parsers;
-import org.codehaus.jparsec.Scanners;
 
 public final class Sandbox { //makeshift test bench of sorts...
 
+	static Grammar grammar = new Grammar();
+	
 	public static void main(String[] args) {
 		//testVar("foo"); //works!
 		testVarAssign("foo = 3"); 
@@ -20,17 +20,19 @@ public final class Sandbox { //makeshift test bench of sorts...
 		//testOp("/"); //works!
 		//testInt("56"); //works!
 		
-		//TODO: works, with a concession - problem with OpAppExp node... (left-recursion??)
+	
+		//Stmt stmt = grammar.parse("+");
 		
-		//TODO: what about every lowest level node having skipMany whitespace before? will that work?
 		
-		final Parser<PlusOp> IGNORED =
+		
+	
+		/*final Parser<PlusOp> IGNORED =
 			      Parsers.or(Scanners.JAVA_LINE_COMMENT, Scanners.JAVA_BLOCK_COMMENT, Scanners.WHITESPACES).skipMany().cast();
 		Parser<PlusOp> p = new PlusOpNode(new Grammar()).parser();
 		Parser<PlusOp> g = Parsers.sequence(IGNORED, p);
 		PlusOp foo = g.parse("+");
 		System.out.println("***WHITESPACE FIDDLING***");
-		System.out.println("Return type: " + foo.getClass().getName());
+		System.out.println("Return type: " + foo.getClass().getName());*/
 	}
 	
 
@@ -47,7 +49,7 @@ public final class Sandbox { //makeshift test bench of sorts...
 
 	public static void testOp(String s) {
 		System.out.println("***TESTING OP PARSER***");
-		Parser<Op> p  = new RootOp(new Grammar()).parser();
+		Parser<Op> p = grammar.getOpNode().parser();
 		System.out.println("Parser made");
 		Op foo = p.parse(s);
 		System.out.println("String parsed");
@@ -85,7 +87,7 @@ public final class Sandbox { //makeshift test bench of sorts...
 	
 	public static void testVarAssign(String s) { 
 		System.out.println("***TESTING VAR ASSIGN PARSER***");
-		Parser<VarAssignStmt> p = new VarAssignNode(new Grammar()).parser();
+		Parser<VarAssignStmt> p = grammar.getVarAssignNode().parser();
 		System.out.println("Parser made");
 		VarAssignStmt foo = p.parse(s);
 		System.out.println("String parsed");
