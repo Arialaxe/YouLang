@@ -10,10 +10,9 @@ public class PrintStmtNode extends Node {
 	PrintNode printNode;
 	RootExp expNode;
 	
-	public PrintStmtNode(Grammar newParent, PrintNode printNode, RootExp expNode) {
+	public PrintStmtNode(Grammar newParent, PrintNode printNode) {
 		super(newParent);
 		this.printNode = printNode;
-		this.expNode = expNode;
 	}
 
 	@Override
@@ -21,4 +20,7 @@ public class PrintStmtNode extends Node {
 		return Mapper.curry(PrintStmt.class).sequence(printNode.parser(), expNode.parser());
 	}
 
+	public void setExpNode(RootExp expNode) {
+		this.expNode = expNode;
+	}
 }

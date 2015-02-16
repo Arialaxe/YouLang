@@ -22,50 +22,43 @@ package calculator;
 	  }
 	  
 	  static final Parser<Integer> NUMBER = Scanners.INTEGER.map(new Map<String, Integer>() {
-	    @Override
-		public Integer map(String text) {
+	    public Integer map(String text) {
 	      return Integer.valueOf(text);
 	    }
 	  });
 	  
 	  static final Binary<Integer> PLUS = new Binary<Integer>() {
-	    @Override
-		public Integer map(Integer a, Integer b) {
+	    public Integer map(Integer a, Integer b) {
 	      return a + b;
 	    }
 	  };
 	  
 	  static final Binary<Integer> MINUS = new Binary<Integer>() {
-	    @Override
-		public Integer map(Integer a, Integer b) {
+	    public Integer map(Integer a, Integer b) {
 	      return a - b;
 	    }
 	  };
 	  
 	  static final Binary<Integer> MUL = new Binary<Integer>() {
-	    @Override
-		public Integer map(Integer a, Integer b) {
+	    public Integer map(Integer a, Integer b) {
 	      return a * b;
 	    }
 	  };
 	  
 	  static final Binary<Integer> DIV = new Binary<Integer>() {
-	    @Override
-		public Integer map(Integer a, Integer b) {
+	    public Integer map(Integer a, Integer b) {
 	      return a / b;
 	    }
 	  };
 	  
 	  static final Binary<Integer> MOD = new Binary<Integer>() {
-	    @Override
-		public Integer map(Integer a, Integer b) {
+	    public Integer map(Integer a, Integer b) {
 	      return a % b;
 	    }
 	  };
 	  
 	  static final Unary<Integer> NEG = new Unary<Integer>() {
-	    @Override
-		public Integer map(Integer i) {
+	    public Integer map(Integer i) {
 	      return -i;
 	    }
 	  };

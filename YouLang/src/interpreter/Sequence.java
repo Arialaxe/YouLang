@@ -10,10 +10,6 @@ public class Sequence extends Stmt {
 		this.stmt2 = stmt2Retn;
 	}
 	
-	public Sequence (Stmt stmt1, Stmt stmt2) {
-		this.stmt1 = stmt1;
-		this.stmt2 = stmt2;
-	}
 	@Override
 	public void eval(){
 		stmt1.eval();

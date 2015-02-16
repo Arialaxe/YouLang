@@ -13,20 +13,23 @@ public class OpAppNode extends Node {
 	RootOp opNode;
 	RightBracketNode rightBracketNode;
 	
-	public OpAppNode(Grammar newParent, LeftBracketNode leftBracketNode, RootExp expNode, 
-			RootOp opNode, RightBracketNode rightBracketNode) {
+	public OpAppNode(Grammar newParent, LeftBracketNode leftBracketNode, RightBracketNode rightBracketNode) {
 		super(newParent);
 		this.leftBracketNode = leftBracketNode;
-		this.expNode = expNode;
-		this.opNode = opNode;
 		this.rightBracketNode = rightBracketNode;
 	}
 
 	@Override
 	public Parser<OpAppExp> parser() {
-		Parser<Exp> expParser = expNode.parser();
 		return Mapper.curry(OpAppExp.class).
-				sequence(leftBracketNode.parser(), expParser, opNode.parser(), expParser, rightBracketNode.parser());
+				sequence(leftBracketNode.parser(), expNode.parser(), opNode.parser(), expNode.parser(), rightBracketNode.parser());
 	}
 
+	public void setExpNode(RootExp expNode) {
+		this.expNode = expNode;
+	}
+
+	public void setOpNode(RootOp opNode) {
+		this.opNode = opNode;
+	}
 }

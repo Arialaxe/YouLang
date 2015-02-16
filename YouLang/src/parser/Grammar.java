@@ -45,21 +45,32 @@ public class Grammar {
 	private RootStmt stmtNode;
 	private RootOp opNode;
 	
-	private OpAppNode opAppNode = new OpAppNode(this, leftBracketNode, expNode, opNode, rightBracketNode);
-	private VarAssignNode varAssignNode = new VarAssignNode(this, varNode, equalsNode, expNode);
-	private SequenceNode sequenceNode = new SequenceNode(this, seqStmtNode, semiColonNode, stmtNode);
-	private IfThenElseNode ifThenElseNode = new IfThenElseNode(this, ifNode, expNode, thenNode, stmtNode, elseNode);
-	private WhileDoNode whileDoNode = new WhileDoNode(this, whileNode, expNode, doNode, stmtNode);
-	private PrintStmtNode printStmtNode = new PrintStmtNode(this, printNode, expNode);
+	private OpAppNode opAppNode = new OpAppNode(this, leftBracketNode, rightBracketNode);
+	private VarAssignNode varAssignNode = new VarAssignNode(this, varNode, equalsNode);
+	private SequenceNode sequenceNode = new SequenceNode(this, semiColonNode);
+	private IfThenElseNode ifThenElseNode = new IfThenElseNode(this, ifNode, thenNode, elseNode);
+	private WhileDoNode whileDoNode = new WhileDoNode(this, whileNode, doNode);
+	private PrintStmtNode printStmtNode = new PrintStmtNode(this, printNode);
 	
-	{
-		expNode = new RootExp(this, intNode, varNode, opAppNode);
-		seqStmtNode = new SeqStmtNode(this, sequenceNode, stmtNode);
-		stmtNode = new RootStmt(this, varAssignNode, seqStmtNode, ifThenElseNode, whileDoNode, printStmtNode);
-		opNode = new RootOp(this, plusOpNode, subOpNode, mulOpNode, divOpNode, greaterOpNode);
-	}
 
 	public Stmt parse (String stringToParse) {
+		expNode = new RootExp(this, intNode, varNode, opAppNode);
+		seqStmtNode = new SeqStmtNode(this, sequenceNode);
+		stmtNode = new RootStmt(this, varAssignNode, seqStmtNode, ifThenElseNode, whileDoNode, printStmtNode);
+		seqStmtNode.setStmtNode(stmtNode);
+		opNode = new RootOp(this, plusOpNode, subOpNode, mulOpNode, divOpNode, greaterOpNode);
+		
+		opAppNode.setExpNode(expNode);
+		opAppNode.setOpNode(opNode);
+		varAssignNode.setExpNode(expNode);
+		sequenceNode.setStmtNode(stmtNode);
+		sequenceNode.setSeqStmtNode(seqStmtNode);
+		ifThenElseNode.setExpNode(expNode);
+		ifThenElseNode.setStmtNode(stmtNode);
+		whileDoNode.setExpNode(expNode);
+		whileDoNode.setStmtNode(stmtNode);
+		printStmtNode.setExpNode(expNode);
+		
 		Parser<Stmt> stmtParser = stmtNode.parser();
 		return stmtParser.parse(stringToParse);
 	}

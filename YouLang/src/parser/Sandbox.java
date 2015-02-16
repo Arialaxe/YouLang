@@ -3,6 +3,7 @@ package parser;
 import interpreter.IntExp;
 import interpreter.Op;
 import interpreter.PlusOp;
+import interpreter.Stmt;
 import interpreter.VarAssignStmt;
 import interpreter.VarExp;
 
@@ -14,14 +15,14 @@ public final class Sandbox { //makeshift test bench of sorts...
 	
 	public static void main(String[] args) {
 		//testVar("foo"); //works!
-		testVarAssign("foo = 3"); 
+		//testVarAssign("foo = 3"); 
 		//testIf("if"); //works!
 		//testPlus("plus"); //works!
 		//testOp("/"); //works!
 		//testInt("56"); //works!
 		
-	
-		//Stmt stmt = grammar.parse("+");
+		System.out.println("*****");
+		Stmt stmt = grammar.parse("+");
 		
 		
 		
