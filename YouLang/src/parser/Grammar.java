@@ -57,18 +57,18 @@ public class Grammar {
 		expNode = new RootExp(this, intNode, varNode, opAppNode);
 		seqStmtNode = new SeqStmtNode(this, sequenceNode);
 		stmtNode = new RootStmt(this, varAssignNode, seqStmtNode, ifThenElseNode, whileDoNode, printStmtNode);
-		seqStmtNode.setStmtNode(stmtNode);
+		//seqStmtNode.setStmtNode(stmtNode);
 		opNode = new RootOp(this, plusOpNode, subOpNode, mulOpNode, divOpNode, greaterOpNode);
 		
-		opAppNode.setExpNode(expNode);
+		//opAppNode.setExpNode(expNode);
 		opAppNode.setOpNode(opNode);
 		varAssignNode.setExpNode(expNode);
-		sequenceNode.setStmtNode(stmtNode);
-		sequenceNode.setSeqStmtNode(seqStmtNode);
+		//sequenceNode.setStmtNode(stmtNode);
+		//sequenceNode.setSeqStmtNode(seqStmtNode);
 		ifThenElseNode.setExpNode(expNode);
-		ifThenElseNode.setStmtNode(stmtNode);
+		//ifThenElseNode.setStmtNode(stmtNode);
 		whileDoNode.setExpNode(expNode);
-		whileDoNode.setStmtNode(stmtNode);
+		//whileDoNode.setStmtNode(stmtNode);
 		printStmtNode.setExpNode(expNode);
 		
 		Parser<Stmt> stmtParser = stmtNode.parser();

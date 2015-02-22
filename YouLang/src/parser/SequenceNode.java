@@ -1,15 +1,16 @@
 package parser;
 
 import interpreter.Sequence;
+import interpreter.Stmt;
 
 import org.codehaus.jparsec.Parser;
 import org.codehaus.jparsec.misc.Mapper;
 
 public class SequenceNode extends Node {
 	
-	SeqStmtNode seqStmtNode;
+	Parser.Reference<Stmt> seqStmtRef;
 	SemiColonNode semiColonNode;
-	RootStmt stmtNode;
+	Parser.Reference<Stmt> stmtRef;
 
 	public SequenceNode(Grammar newParent, SemiColonNode semiColonNode) {
 		super(newParent);
@@ -18,14 +19,14 @@ public class SequenceNode extends Node {
 
 	@Override
 	public Parser<Sequence> parser() {
-		return Mapper.curry(Sequence.class).sequence(stmtNode.parser(), semiColonNode.parser(), seqStmtNode.parser());
+		return Mapper.curry(Sequence.class).sequence(stmtRef.lazy(), semiColonNode.parser(), seqStmtRef.lazy());
 	}
 	
-	public void setSeqStmtNode(SeqStmtNode seqStmtNode) {
-		this.seqStmtNode = seqStmtNode;
+	public void setSeqStmtRef(Parser.Reference<Stmt> seqStmtRef) {
+		this.seqStmtRef = seqStmtRef;
 	}
 
-	public void setStmtNode(RootStmt stmtNode) {
-		this.stmtNode = stmtNode;
+	public void setStmtRef(Parser.Reference<Stmt> stmtRef) {
+		this.stmtRef = stmtRef;
 	}
 }

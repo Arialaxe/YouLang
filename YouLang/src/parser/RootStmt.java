@@ -25,12 +25,15 @@ public class RootStmt extends Node {
 
 	@Override
 	public Parser<Stmt> parser() {
-		return Parsers.or(
-				varAssignNode.parser(),
-				seqStmtNode.parser(),
-				ifThenElseNode.parser(),
-				whileDoNode.parser(),
-				printStmtNode.parser());
+		Parser.Reference<Stmt> stmtRef = new Parser.Reference<Stmt>();
+		seqStmtNode.setStmtRef(stmtRef);
+		ifThenElseNode.setStmtRef(stmtRef);
+		whileDoNode.setStmtRef(stmtRef);
+		Parser<Stmt> result = Parsers.or(varAssignNode.parser(), seqStmtNode.parser(), 
+											ifThenElseNode.parser(), whileDoNode.parser(),
+												printStmtNode.parser());
+		stmtRef.set(result);
+		return result;
 	}
 
 }

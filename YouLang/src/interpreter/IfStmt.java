@@ -13,11 +13,6 @@ public class IfStmt extends Stmt {
 		this.ifFalse = elseStmtRetn;
 	}
 	
-	public IfStmt (Exp condition, Stmt ifTrue, Stmt ifFalse) {
-		this.condition = condition;
-		this.ifTrue = ifTrue;
-		this.ifFalse = ifFalse;
-	}
 	@Override 
 	public void eval(){
 		if (condition.eval() > 0) {

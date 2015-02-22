@@ -7,7 +7,7 @@ public abstract class Node {
 	
 	Grammar parent;
 	Parser ignored = Scanners.WHITESPACES.skipMany();
-	
+
 	public Node (Grammar newParent) {
 		parent = newParent;
 	}

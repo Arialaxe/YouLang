@@ -1,5 +1,6 @@
 package parser;
 
+import interpreter.Stmt;
 import interpreter.WhileStmt;
 
 import org.codehaus.jparsec.Parser;
@@ -10,7 +11,7 @@ public class WhileDoNode extends Node {
 	WhileNode whileNode;
 	RootExp expNode;
 	DoNode doNode;
-	RootStmt stmtNode;
+	Parser.Reference<Stmt> stmtRef;
 	
 	public WhileDoNode(Grammar newParent, WhileNode whileNode, DoNode doNode) {
 		super(newParent);
@@ -20,15 +21,15 @@ public class WhileDoNode extends Node {
 
 	@Override
 	public Parser<WhileStmt> parser() {
-		return Mapper.curry(WhileStmt.class).sequence(whileNode.parser(), expNode.parser(), doNode.parser(), stmtNode.parser());
+		return Mapper.curry(WhileStmt.class).sequence(whileNode.parser(), expNode.parser(), doNode.parser(), stmtRef.lazy());
 	}
 
 	public void setExpNode(RootExp expNode) {
 		this.expNode = expNode;
 	}
 
-	public void setStmtNode(RootStmt stmtNode) {
-		this.stmtNode = stmtNode;
+	public void setStmtRef(Parser.Reference<Stmt> stmtRef) {
+		this.stmtRef = stmtRef;
 	}
 
 }

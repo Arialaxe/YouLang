@@ -23,6 +23,7 @@ public final class Sandbox { //makeshift test bench of sorts...
 		
 		System.out.println("*****");
 		Stmt stmt = grammar.parse("+");
+		stmt.eval();
 		
 		
 		

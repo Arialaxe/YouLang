@@ -11,7 +11,7 @@ public class IfThenElseNode extends Node {
 	IfNode ifNode;
 	RootExp expNode;
 	ThenNode thenNode;
-	RootStmt stmtNode;
+	Parser.Reference<Stmt> stmtRef;
 	ElseNode elseNode;
 	
 	public IfThenElseNode(Grammar newParent, IfNode ifNode, ThenNode thenNode, ElseNode elseNode) {
@@ -23,17 +23,16 @@ public class IfThenElseNode extends Node {
 
 	@Override
 	public Parser<IfStmt> parser() {
-		Parser<Stmt> stmtParser = stmtNode.parser();
 		return Mapper.curry(IfStmt.class).
-				sequence(ifNode.parser(), expNode.parser(), thenNode.parser(), stmtParser, elseNode.parser(), stmtParser);
+				sequence(ifNode.parser(), expNode.parser(), thenNode.parser(), stmtRef.lazy(), elseNode.parser(), stmtRef.lazy());
 	}
 
 	public void setExpNode(RootExp expNode) {
 		this.expNode = expNode;
 	}
 
-	public void setStmtNode(RootStmt stmtNode) {
-		this.stmtNode = stmtNode;
+	public void setStmtRef(Parser.Reference<Stmt> stmtRef) {
+		this.stmtRef = stmtRef;
 	}
 
 }

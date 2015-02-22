@@ -20,7 +20,11 @@ public class RootExp extends Node {
 
 	@Override
 	public Parser<Exp> parser() {
-		return Parsers.or(intNode.parser(), varNode.parser(), opAppNode.parser());
+		Parser.Reference<Exp> expRef = new Parser.Reference<Exp>();
+		opAppNode.setExpRef(expRef);
+		Parser<Exp> result = Parsers.or(intNode.parser(), varNode.parser(), opAppNode.parser());
+		expRef.set(result);
+		return result;
 	}
 
 }

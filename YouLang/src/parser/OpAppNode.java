@@ -9,7 +9,7 @@ import org.codehaus.jparsec.misc.Mapper;
 public class OpAppNode extends Node {
 
 	LeftBracketNode leftBracketNode;
-	RootExp expNode;
+	Parser.Reference<Exp> expRef;
 	RootOp opNode;
 	RightBracketNode rightBracketNode;
 	
@@ -22,11 +22,11 @@ public class OpAppNode extends Node {
 	@Override
 	public Parser<OpAppExp> parser() {
 		return Mapper.curry(OpAppExp.class).
-				sequence(leftBracketNode.parser(), expNode.parser(), opNode.parser(), expNode.parser(), rightBracketNode.parser());
+				sequence(leftBracketNode.parser(), expRef.lazy(), opNode.parser(), expRef.lazy(), rightBracketNode.parser());
 	}
 
-	public void setExpNode(RootExp expNode) {
-		this.expNode = expNode;
+	public void setExpRef(Parser.Reference<Exp> expRef) {
+		this.expRef = expRef;
 	}
 
 	public void setOpNode(RootOp opNode) {
