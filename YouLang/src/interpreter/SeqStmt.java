@@ -1,6 +1,6 @@
 package interpreter;
 
-public abstract class SeqStmt extends Stmt {
+public abstract class SeqStmt {
 
 	public abstract void eval(); //placeholder
 }

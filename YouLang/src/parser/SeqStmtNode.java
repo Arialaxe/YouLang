@@ -1,5 +1,6 @@
 package parser;
 
+import interpreter.SeqStmt;
 import interpreter.Stmt;
 
 import org.codehaus.jparsec.Parser;
@@ -16,11 +17,11 @@ public class SeqStmtNode extends Node {
 	}
 
 	@Override
-	public Parser<Stmt> parser() {
-		Parser.Reference<Stmt> seqStmtRef = new Parser.Reference<Stmt>();
+	public Parser<SeqStmt> parser() {
+		Parser.Reference<SeqStmt> seqStmtRef = new Parser.Reference<SeqStmt>();
 		sequenceNode.setSeqStmtRef(seqStmtRef);
 		sequenceNode.setStmtRef(stmtRef);
-		Parser<Stmt> result = Parsers.or(sequenceNode.parser(), stmtRef.lazy());
+		Parser<SeqStmt> result = Parsers.or(sequenceNode.parser(), stmtRef.lazy()).cast();
 		seqStmtRef.set(result);
 		return result;
 	}

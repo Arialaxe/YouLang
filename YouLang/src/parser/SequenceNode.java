@@ -1,14 +1,16 @@
 package parser;
 
+import interpreter.SeqStmt;
 import interpreter.Sequence;
 import interpreter.Stmt;
 
 import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.Parser.Reference;
 import org.codehaus.jparsec.misc.Mapper;
 
 public class SequenceNode extends Node {
 	
-	Parser.Reference<Stmt> seqStmtRef;
+	Parser.Reference<SeqStmt> seqStmtRef;
 	SemiColonNode semiColonNode;
 	Parser.Reference<Stmt> stmtRef;
 
@@ -22,7 +24,7 @@ public class SequenceNode extends Node {
 		return Mapper.curry(Sequence.class).sequence(stmtRef.lazy(), semiColonNode.parser(), seqStmtRef.lazy());
 	}
 	
-	public void setSeqStmtRef(Parser.Reference<Stmt> seqStmtRef) {
+	public void setSeqStmtRef(Reference<SeqStmt> seqStmtRef) {
 		this.seqStmtRef = seqStmtRef;
 	}
 

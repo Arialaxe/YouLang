@@ -3,9 +3,9 @@ package interpreter;
 public class Sequence extends Stmt {
 
 	private Stmt stmt1;
-	private Stmt stmt2;
+	private SeqStmt stmt2;
 	
-	public Sequence (Stmt stmt1Retn, String semiColonRetn, Stmt stmt2Retn){
+	public Sequence (Stmt stmt1Retn, String semiColonRetn, SeqStmt stmt2Retn){
 		this.stmt1 = stmt1Retn;
 		this.stmt2 = stmt2Retn;
 	}

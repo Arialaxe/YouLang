@@ -31,7 +31,7 @@ public class RootStmt extends Node {
 		whileDoNode.setStmtRef(stmtRef);
 		Parser<Stmt> result = Parsers.or(varAssignNode.parser(), seqStmtNode.parser(), 
 											ifThenElseNode.parser(), whileDoNode.parser(),
-												printStmtNode.parser());
+												printStmtNode.parser()).cast();
 		stmtRef.set(result);
 		return result;
 	}
