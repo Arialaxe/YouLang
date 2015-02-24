@@ -1,6 +1,7 @@
 package parser;
 
 import interpreter.IntExp;
+
 import interpreter.Op;
 import interpreter.PlusOp;
 import interpreter.Stmt;
@@ -22,8 +23,12 @@ public final class Sandbox { //makeshift test bench of sorts...
 		//testInt("56"); //works!
 		
 		System.out.println("*****");
-		Stmt stmt = grammar.parse("+");
+		Stmt stmt = grammar.parse("foo = 4");
 		stmt.eval();
+		System.out.println(stmt.getClass().getName());
+		VarAssignStmt vs = (VarAssignStmt) stmt;
+		VarExp var = vs.getVar();
+		System.out.println("Var id: " + var.getID() + ", value: " + var.eval());
 		
 		
 		
