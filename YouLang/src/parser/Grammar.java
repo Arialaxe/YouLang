@@ -1,26 +1,28 @@
 package parser;
 
-import interpreter.Stmt;
+import interpreter.SeqStmt;
+
+import java.util.HashMap;
 
 import org.codehaus.jparsec.Parser;
 
 public class Grammar {
 	
-	private String plusOpSetting;
-	private String subOpSetting;
-	private String mulOpSetting;
-	private String divOpSetting;
-	private String greaterOpSetting;
-	private String equalsSetting;
-	private String semiColonSetting;
-	private String leftBracketSetting;
-	private String rightBracketSetting;
-	private String ifSetting;
-	private String thenSetting;
-	private String elseSetting;
-	private String whileSetting;
-	private String doSetting;
-	private String printSetting;
+	private String plusOpSetting = " ";
+	private String subOpSetting = " ";
+	private String mulOpSetting = " ";
+	private String divOpSetting = " ";
+	private String greaterOpSetting = " ";
+	private String equalsSetting = " ";
+	private String semiColonSetting = " ";
+	private String leftBracketSetting = " ";
+	private String rightBracketSetting = " ";
+	private String ifSetting = " ";
+	private String thenSetting = " ";
+	private String elseSetting = " ";
+	private String whileSetting = " ";
+	private String doSetting = " ";
+	private String printSetting = " ";
 	
 	private IntNode intNode = new IntNode(this);
 	private VarNode varNode = new VarNode(this);
@@ -48,16 +50,17 @@ public class Grammar {
 	private OpAppNode opAppNode = new OpAppNode(this, leftBracketNode, rightBracketNode);
 	private VarAssignNode varAssignNode = new VarAssignNode(this, varNode, equalsNode);
 	private SequenceNode sequenceNode = new SequenceNode(this, semiColonNode);
-	private IfThenElseNode ifThenElseNode = new IfThenElseNode(this, ifNode, thenNode, elseNode);
-	private WhileDoNode whileDoNode = new WhileDoNode(this, whileNode, doNode);
-	private PrintStmtNode printStmtNode = new PrintStmtNode(this, printNode);
+	private IfThenElseNode ifThenElseNode = new IfThenElseNode(this, ifNode, thenNode, leftBracketNode, rightBracketNode, elseNode);
+	private WhileDoNode whileDoNode = new WhileDoNode(this, whileNode, doNode, leftBracketNode, rightBracketNode);
+	private PrintStmtNode printStmtNode = new PrintStmtNode(this, printNode, intNode);
 	
 
-	public Stmt parse (String stringToParse) {
+	public SeqStmt parse (String stringToParse) {
 		expNode = new RootExp(this, intNode, varNode, opAppNode);
 		seqStmtNode = new SeqStmtNode(this, sequenceNode);
-		stmtNode = new RootStmt(this, varAssignNode, seqStmtNode, ifThenElseNode, whileDoNode, printStmtNode);
-		//seqStmtNode.setStmtNode(stmtNode);
+		stmtNode = new RootStmt(this, varAssignNode, ifThenElseNode, whileDoNode, printStmtNode);
+		seqStmtNode.setStmtNode(stmtNode);
+		
 		opNode = new RootOp(this, plusOpNode, subOpNode, mulOpNode, divOpNode, greaterOpNode);
 		
 		//opAppNode.setExpNode(expNode);
@@ -71,12 +74,31 @@ public class Grammar {
 		//whileDoNode.setStmtNode(stmtNode);
 		printStmtNode.setExpNode(expNode);
 		
-		Parser<Stmt> stmtParser = stmtNode.parser();
-		return stmtParser.parse(stringToParse);
+		//Parser.Reference<SeqStmt> seqStmtRef = new Parser.Reference<SeqStmt>();
+		//whileDoNode.setSeqStmtRef(seqStmtRef);
+		
+		Parser<SeqStmt> parser = seqStmtNode.parser();
+		//seqStmtRef.set(parser);
+		return parser.parse(stringToParse);
 	}
 	
-	public Boolean settingCheck (String setting) {
-		//TODO 
+	public Boolean settingCheck (String setting) { 
+		//if it contains whitespace/is empty
+		if (setting.contains(" ")) return false;
+		if (setting.equals("")) return false;
+		
+		//if it contains any settings already
+		if (setting.contains(plusOpSetting) || setting.contains(subOpSetting) || 
+			setting.contains(mulOpSetting) || setting.contains(divOpSetting) || 
+			setting.contains(greaterOpSetting) || setting.contains(equalsSetting) ||
+			setting.contains(semiColonSetting) || setting.contains(leftBracketSetting) ||
+			setting.contains(rightBracketSetting) || setting.contains(ifSetting) ||
+			setting.contains(thenSetting) || setting.contains(elseSetting) ||
+			setting.contains(whileSetting) || setting.contains(doSetting) ||
+			setting.contains(printSetting)) {
+			return false;
+		}
+		
 		return true;
 	}
 	
@@ -88,7 +110,7 @@ public class Grammar {
 			plusOpSetting = pl;
 		}
 		else {
-			System.err.println(plusOpSetting + " is an invalid setting for +");
+			System.err.println(pl + " is an invalid setting for +");
 			plusOpSetting = "+";
 		}
 		
@@ -96,7 +118,7 @@ public class Grammar {
 			subOpSetting = su;
 		}
 		else {
-			System.err.println(subOpSetting + " is an invalid setting for -");
+			System.err.println(su + " is an invalid setting for -");
 			subOpSetting = "-";
 		}
 		
@@ -104,7 +126,7 @@ public class Grammar {
 			mulOpSetting = mu;
 		}
 		else {
-			System.err.println(mulOpSetting + " is an invalid setting for *");
+			System.err.println(mu + " is an invalid setting for *");
 			mulOpSetting = "*";
 		}
 		
@@ -112,7 +134,7 @@ public class Grammar {
 			divOpSetting = di;
 		}
 		else {
-			System.err.println(divOpSetting + " is an invalid setting for /");
+			System.err.println(di + " is an invalid setting for /");
 			divOpSetting = "/";
 		}
 		
@@ -120,7 +142,7 @@ public class Grammar {
 			greaterOpSetting = gr;
 		}
 		else {
-			System.err.println(greaterOpSetting + " is an invalid setting for >");
+			System.err.println(gr + " is an invalid setting for >");
 			greaterOpSetting = ">";
 		}
 		
@@ -128,7 +150,7 @@ public class Grammar {
 			equalsSetting = eq;
 		}
 		else {
-			System.err.println(equalsSetting + " is an invalid setting for =");
+			System.err.println(eq + " is an invalid setting for =");
 			equalsSetting = "=";
 		}
 		
@@ -136,7 +158,7 @@ public class Grammar {
 			semiColonSetting = se;
 		}
 		else {
-			System.err.println(semiColonSetting + " is an invalid setting for ;");
+			System.err.println(se + " is an invalid setting for ;");
 			semiColonSetting = ";";
 		}
 		
@@ -144,7 +166,7 @@ public class Grammar {
 			leftBracketSetting = le;
 		}
 		else {
-			System.err.println(leftBracketSetting + " is an invalid setting for (");
+			System.err.println(le + " is an invalid setting for (");
 			leftBracketSetting = "(";
 		}
 		
@@ -152,7 +174,7 @@ public class Grammar {
 			rightBracketSetting = ri;
 		}
 		else {
-			System.err.println(rightBracketSetting + " is an invalid setting for )");
+			System.err.println(ri + " is an invalid setting for )");
 			rightBracketSetting = ")";
 		}
 		
@@ -160,7 +182,7 @@ public class Grammar {
 			ifSetting = i;
 		}
 		else {
-			System.err.println(ifSetting + " is an invalid setting for if");
+			System.err.println(i + " is an invalid setting for if");
 			ifSetting = "if";
 		}
 		
@@ -168,7 +190,7 @@ public class Grammar {
 			thenSetting = th;
 		}
 		else {
-			System.err.println(thenSetting + " is an invalid setting for then");
+			System.err.println(th + " is an invalid setting for then");
 			thenSetting = "then";
 		}
 		
@@ -176,7 +198,7 @@ public class Grammar {
 			elseSetting = el;
 		}
 		else {
-			System.err.println(elseSetting + " is an invalid setting for else");
+			System.err.println(el + " is an invalid setting for else");
 			elseSetting = "else";
 		}
 		
@@ -184,7 +206,7 @@ public class Grammar {
 			whileSetting = wh;
 		}
 		else {
-			System.err.println(whileSetting + " is an invalid setting for while");
+			System.err.println(wh + " is an invalid setting for while");
 			whileSetting = "while";
 		}
 		
@@ -192,7 +214,7 @@ public class Grammar {
 			doSetting = d;
 		}
 		else {
-			System.err.println(doSetting + " is an invalid setting for do");
+			System.err.println(d + " is an invalid setting for do");
 			doSetting = "do";
 		}
 		
@@ -200,7 +222,7 @@ public class Grammar {
 			printSetting = pr;
 		}
 		else {
-			System.err.println(printSetting + " is an invalid setting for print");
+			System.err.println(pr + " is an invalid setting for print");
 			printSetting = "print";
 		}
 		

@@ -7,11 +7,30 @@ public class VarExp extends Exp {
 	
 	public VarExp (String idRetn) {
 		this.varID = idRetn;
-		this.value = new IntExp("0"); //TODO this is just a default thing so it doesn't complain
+		Boolean flag = false;
+		if (VarList.varInitFlag) {
+			for (VarExp v : VarList.varList) {
+				if (varID.equals(v.getID())){
+					this.value = v.value;
+					flag = true;
+				}
+			}
+		}
+		if (!flag) this.value = new IntExp("0");
 	}
 
 	@Override
 	public int eval(){
+		Boolean flag = false;
+		if (VarList.varInitFlag) {
+			for (VarExp v : VarList.varList) {
+				if (varID.equals(v.getID())){
+					this.value = v.value;
+					flag = true;
+				}
+			}
+		}
+		if (!flag) this.value = new IntExp("0");
 		return value.eval();
 	}
 	

@@ -9,7 +9,8 @@ import org.codehaus.jparsec.Parsers;
 public class SeqStmtNode extends Node {
 	
 	SequenceNode sequenceNode;
-	Parser.Reference<Stmt> stmtRef;
+	//Parser.Reference<Stmt> stmtRef;
+	RootStmt stmtNode;
 
 	public SeqStmtNode(Grammar newParent, SequenceNode sequenceNode) {
 		super(newParent);
@@ -20,14 +21,25 @@ public class SeqStmtNode extends Node {
 	public Parser<SeqStmt> parser() {
 		Parser.Reference<SeqStmt> seqStmtRef = new Parser.Reference<SeqStmt>();
 		sequenceNode.setSeqStmtRef(seqStmtRef);
-		sequenceNode.setStmtRef(stmtRef);
-		Parser<SeqStmt> result = Parsers.or(sequenceNode.parser(), stmtRef.lazy()).cast();
+		sequenceNode.setStmtNode(stmtNode);
+		stmtNode.setSeqStmtRef(seqStmtRef);
+		//sequenceNode.setStmtRef(stmtRef);
+		//Parser<SeqStmt> result = Parsers.or(sequenceNode.parser(), stmtRef.lazy()).cast();
+		Parser<SeqStmt> result = Parsers.or(sequenceNode.parser(), stmtNode.parser()).cast();
 		seqStmtRef.set(result);
 		return result;
 	}
 
-	public void setStmtRef(Parser.Reference<Stmt> stmtRef) {
+	public void setStmtNode(RootStmt stmtNode) {
+		this.stmtNode = stmtNode;
+	}
+	
+	
+	/*public void setStmtRef(Parser.Reference<Stmt> stmtRef) {
 		this.stmtRef = stmtRef;
 	}
+	*/
+	
+	
 
 }

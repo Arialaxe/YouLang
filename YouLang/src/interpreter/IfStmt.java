@@ -6,8 +6,9 @@ public class IfStmt extends Stmt {
 	private Stmt ifTrue;
 	private Stmt ifFalse;
 	
-	public IfStmt (String ifRetn, Exp expRetn, String thenRetn, 
-					Stmt thenStmtRetn, String elseRetn, Stmt elseStmtRetn) {
+	public IfStmt (String ifRetn, Exp expRetn, String thenRetn, String leftBracketRetn, Stmt thenStmtRetn, 
+			String rightBracketRetn, String elseRetn, String leftBracketRetn2, Stmt elseStmtRetn,
+			String rightBracketRetn2) {
 		this.condition = expRetn;
 		this.ifTrue = thenStmtRetn;
 		this.ifFalse = elseStmtRetn;

@@ -1,10 +1,9 @@
 package parser;
 
 import interpreter.IntExp;
-
 import interpreter.Op;
 import interpreter.PlusOp;
-import interpreter.Stmt;
+import interpreter.SeqStmt;
 import interpreter.VarAssignStmt;
 import interpreter.VarExp;
 
@@ -13,6 +12,11 @@ import org.codehaus.jparsec.Parser;
 public final class Sandbox { //makeshift test bench of sorts...
 
 	static Grammar grammar = new Grammar();
+	static Grammar biznatch = new Grammar("addthisbiznatch", "subthisbiznatch", "multiplythisbiznatch", "dividethisbiznatch", 
+											"isdisbiggerbiznatch", "isdisthasamebiznatch", "thendothisbiznatch",
+											"yo", "mama", "sobiznatch", "yeahbiznatch", "otherwisebiznatch", "whiledisbiznatch", 
+											"yallbetterdothisbiznatch", "printthisbiznatch"); 
+	static Grammar tester = new Grammar("plus", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 	
 	public static void main(String[] args) {
 		//testVar("foo"); //works!
@@ -22,14 +26,45 @@ public final class Sandbox { //makeshift test bench of sorts...
 		//testOp("/"); //works!
 		//testInt("56"); //works!
 		
+		/*PlusOpNode plusOpNode = new PlusOpNode(grammar);
+		SubOpNode subOpNode = new SubOpNode(grammar);
+		MulOpNode mulOpNode = new MulOpNode(grammar);
+		DivOpNode divOpNode = new DivOpNode(grammar);
+		GreaterOpNode greaterOpNode = new GreaterOpNode(grammar);
+		RootOp opNode = new RootOp(grammar, plusOpNode, subOpNode, mulOpNode, divOpNode, greaterOpNode);
+		
+		IntNode intNode = new IntNode(grammar);
+		VarNode varNode = new VarNode(grammar);
+		LeftBracketNode leftBracketNode = new LeftBracketNode(grammar);
+		RightBracketNode rightBracketNode = new RightBracketNode(grammar);
+		OpAppNode opAppNode = new OpAppNode(grammar, leftBracketNode, rightBracketNode);
+		opAppNode.setOpNode(opNode);
+		
+		RootExp expNode = new RootExp(grammar, intNode, varNode, opAppNode);
+		Parser<Exp> expParser = expNode.parser();
+		System.out.println(expParser.parse("((((3*4)/4)+5)-foo)").eval());
+		
+		
+		
 		System.out.println("*****");
-		Stmt stmt = grammar.parse("foo = 4");
+		PrintStmtNode printStmtNode = new PrintStmtNode(grammar, new PrintNode(grammar), new IntNode(grammar));
+		printStmtNode.setExpNode(expNode);
+		Parser<PrintStmt> parser = printStmtNode.parser();
+		parser.parse("print (6+6)").eval();*/
+		
+		System.out.println("*****");
+		//SeqStmt stmt = grammar.parse("print 6");
+		SeqStmt stmt = grammar.parse("print foo; foo = 3; print foo; foo = 0; if foo then (print 2; print 3) else (print 4; print 5)");
 		stmt.eval();
-		System.out.println(stmt.getClass().getName());
+		/*System.out.println(stmt.getClass().getName());
 		VarAssignStmt vs = (VarAssignStmt) stmt;
 		VarExp var = vs.getVar();
-		System.out.println("Var id: " + var.getID() + ", value: " + var.eval());
-		
+		System.out.println("Var id: " + var.getID() + ", value: " + var.eval());*/
+		System.out.println("*****");
+		SeqStmt biznatchStmt = biznatch.parse("printthisbiznatch 6000 thendothisbiznatch printthisbiznatch yo 900 addthisbiznatch 400 mama");
+		biznatchStmt.eval();
+		SeqStmt stmt2 = tester.parse("print (2 plus 2)");
+		stmt2.eval();
 		
 		
 	

@@ -8,7 +8,8 @@ public class WhileStmt extends Stmt {
 	
 	//return Mapper.curry(WhileStmt.class).sequence(whileParser, expParser, doParser, stmtParser);
 	
-	public WhileStmt (String whileRetn, Exp expRetn, String doRetn, Stmt stmtRetn) { //for Mapper function
+	public WhileStmt (String whileRetn, Exp expRetn, String doRetn, 
+			String leftBracketRetn, Stmt stmtRetn, String rightBracketRetn) { //for Mapper function
 		this.exp = expRetn;
 		this.stmt = stmtRetn;
 	}

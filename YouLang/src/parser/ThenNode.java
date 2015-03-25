@@ -12,7 +12,7 @@ public class ThenNode extends Node {
 
 	@Override
 	public Parser<String> parser() {
-		return Parsers.sequence(ignored, Scanners.string(parent.getDoSetting()).retn("do"));
+		return Parsers.sequence(ignored, Scanners.string(parent.getThenSetting()).retn("then"));
 	}
 
 }

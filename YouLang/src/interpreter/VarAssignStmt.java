@@ -1,5 +1,7 @@
 package interpreter;
 
+import java.util.Vector;
+
 public class VarAssignStmt extends Stmt {
 
 	private VarExp var;
@@ -12,7 +14,21 @@ public class VarAssignStmt extends Stmt {
 	
 	@Override
 	public void eval(){
-		var.assign(exp.eval());
+		if (!VarList.varInitFlag) {
+			VarList.varList = new Vector<VarExp>();
+			var.assign(exp.eval());
+			VarList.varList.add(var);
+			VarList.varInitFlag = true;
+		}
+		else {
+			for (VarExp v : VarList.varList) {
+				if (v.getID().equals(var.getID())) {
+					v.assign(var.eval());
+					return;
+				}
+			}
+			VarList.varList.add(var);
+		}
 	}
 
 	public VarExp getVar() {

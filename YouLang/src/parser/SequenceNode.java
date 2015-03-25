@@ -12,7 +12,8 @@ public class SequenceNode extends Node {
 	
 	Parser.Reference<SeqStmt> seqStmtRef;
 	SemiColonNode semiColonNode;
-	Parser.Reference<Stmt> stmtRef;
+	//Parser.Reference<Stmt> stmtRef;
+	RootStmt stmtNode;
 
 	public SequenceNode(Grammar newParent, SemiColonNode semiColonNode) {
 		super(newParent);
@@ -21,14 +22,20 @@ public class SequenceNode extends Node {
 
 	@Override
 	public Parser<Sequence> parser() {
-		return Mapper.curry(Sequence.class).sequence(stmtRef.lazy(), semiColonNode.parser(), seqStmtRef.lazy());
+		//return Mapper.curry(Sequence.class).sequence(stmtRef.lazy(), semiColonNode.parser(), seqStmtRef.lazy());
+		return Mapper.curry(Sequence.class).sequence(stmtNode.parser(), semiColonNode.parser(), seqStmtRef.lazy());
 	}
 	
 	public void setSeqStmtRef(Reference<SeqStmt> seqStmtRef) {
 		this.seqStmtRef = seqStmtRef;
 	}
 
-	public void setStmtRef(Parser.Reference<Stmt> stmtRef) {
+	/*public void setStmtRef(Parser.Reference<Stmt> stmtRef) {
 		this.stmtRef = stmtRef;
+	}*/
+
+	public void setStmtNode(RootStmt stmtNode) {
+		this.stmtNode = stmtNode;
+		
 	}
 }

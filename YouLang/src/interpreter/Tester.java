@@ -8,5 +8,10 @@ public class Tester {
 		//PlusOp plus = new PlusOp();
 		//OpAppExp exp = new OpAppExp(plus, var2, var1);
 		//System.out.println (exp.eval()); //should print 5
+		VarExp var = new VarExp("foo");
+		VarAssignStmt assign = new VarAssignStmt(var, null, new IntExp("3")); 
+		PrintStmt print = new PrintStmt(null, var);
+		Sequence seq = new Sequence(assign, null, print);
+		seq.eval();
 	}
 }
