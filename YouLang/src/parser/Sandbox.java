@@ -55,16 +55,16 @@ public final class Sandbox { //makeshift test bench of sorts...
 		System.out.println("*****");
 		//SeqStmt stmt = grammar.parse("print 6");
 		SeqStmt stmt = grammar.parse("print foo; foo = 3; print foo; foo = 0; if foo then (print 2; print 3) else (print 4; print 5)");
-		stmt.eval();
+		//stmt.eval();
 		/*System.out.println(stmt.getClass().getName());
 		VarAssignStmt vs = (VarAssignStmt) stmt;
 		VarExp var = vs.getVar();
 		System.out.println("Var id: " + var.getID() + ", value: " + var.eval());*/
 		System.out.println("*****");
 		SeqStmt biznatchStmt = biznatch.parse("printthisbiznatch 6000 thendothisbiznatch printthisbiznatch yo 900 addthisbiznatch 400 mama");
-		biznatchStmt.eval();
+		//biznatchStmt.eval();
 		SeqStmt stmt2 = tester.parse("print (2 plus 2)");
-		stmt2.eval();
+		//stmt2.eval();
 		
 		
 	
@@ -133,7 +133,7 @@ public final class Sandbox { //makeshift test bench of sorts...
 		System.out.println("Parser made");
 		VarAssignStmt foo = p.parse(s);
 		System.out.println("String parsed");
-		foo.eval(new LinkedList());
+		//foo.eval(new LinkedList());
 		System.out.println("Assignment evaluated");
 		VarExp bar = foo.getVar();
 		System.out.println("VarExp extracted");

@@ -14,8 +14,6 @@ public class Sequence extends Stmt {
 	
 	@Override
 	public LinkedList<String> eval(LinkedList<String> output){
-		stmt1.eval(output);
-		stmt2.eval(output);
-		return output;
+		return stmt2.eval(stmt1.eval(output));
 	}
 }

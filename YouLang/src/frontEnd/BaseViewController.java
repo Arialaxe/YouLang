@@ -195,8 +195,12 @@ public class BaseViewController {
 			printed = runMe.eval(new LinkedList<String>());
 			//
 			String prev;
-			console.setText(printed.removeFirst());
-			for (int i = 1; i < printed.size(); i++) {
+			int j = printed.size();
+			for (int i = 0; i < j; i++) {
+				if (i == 0) {
+					console.setText(printed.removeFirst());
+					continue;
+				}
 				prev = console.getText();
 				console.setText(prev.concat("\n" + printed.removeFirst()));
 			}
