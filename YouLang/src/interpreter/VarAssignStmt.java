@@ -24,7 +24,7 @@ public class VarAssignStmt extends Stmt {
 		else {
 			for (VarExp v : VarList.varList) {
 				if (v.getID().equals(var.getID())) {
-					v.assign(var.eval());
+					v.assign(exp.eval());
 					return output;
 				}
 			}

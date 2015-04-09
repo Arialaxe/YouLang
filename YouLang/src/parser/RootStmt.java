@@ -31,8 +31,8 @@ public class RootStmt extends Node {
 		/*Parser<Stmt> result = Parsers.or(varAssignNode.parser(), seqStmtNode.parser(), 
 											ifThenElseNode.parser(), whileDoNode.parser(),
 												printStmtNode.parser()).cast();*/
-		//Parser<Stmt> result = Parsers.or(varAssignNode.parser(), ifThenElseNode.parser(), whileDoNode.parser(), printStmtNode.parser()).cast();
-		Parser<Stmt> result = Parsers.or(varAssignNode.parser(), ifThenElseNode.parser(), printStmtNode.parser()).cast();
+		Parser<Stmt> result = Parsers.or(varAssignNode.parser(), ifThenElseNode.parser(), whileDoNode.parser(), printStmtNode.parser()).cast();
+		//Parser<Stmt> result = Parsers.or(varAssignNode.parser(), ifThenElseNode.parser(), printStmtNode.parser()).cast();
 		//stmtRef.set(result);
 		return result;
 	}

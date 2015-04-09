@@ -19,6 +19,7 @@ public class WhileStmt extends Stmt {
 	public LinkedList<String> eval(LinkedList<String> output) { 
 		while (exp.eval() > 0) { 
 			stmt.eval(output);
+			
 		}
 		return output;
 	}
