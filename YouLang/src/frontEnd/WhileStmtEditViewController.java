@@ -69,8 +69,7 @@ public class WhileStmtEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text1 = whileField.getText();
-			if (grammar.settingCheck(text1)) {
-				grammar.setWhileSetting(text1);
+			if (grammar.setWhileSetting(text1)) {
 				System.out.println(grammar.getWhileSetting());
 				okClicked = true;
 				editStage.close();
@@ -80,8 +79,7 @@ public class WhileStmtEditViewController {
 			}
 			
 			String text2 = doField.getText();
-			if (grammar.settingCheck(text2)) {
-				grammar.setDoSetting(text2);
+			if (grammar.setDoSetting(text2)) {
 				System.out.println(grammar.getDoSetting());
 				okClicked = true;
 				editStage.close();

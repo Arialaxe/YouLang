@@ -5,12 +5,12 @@ import java.util.LinkedList;
 public class WhileStmt extends Stmt {
 
 	private Exp exp;
-	private Stmt stmt;
+	private SeqStmt stmt;
 	
 	//return Mapper.curry(WhileStmt.class).sequence(whileParser, expParser, doParser, stmtParser);
 	
 	public WhileStmt (String whileRetn, Exp expRetn, String doRetn, 
-			String leftBracketRetn, Stmt stmtRetn, String rightBracketRetn) { //for Mapper function
+			String leftBracketRetn, SeqStmt stmtRetn, String rightBracketRetn) { //for Mapper function
 		this.exp = expRetn;
 		this.stmt = stmtRetn;
 	}

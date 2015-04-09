@@ -53,8 +53,7 @@ public class VarAssignEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text = field.getText();
-			if (grammar.settingCheck(text)) {
-				grammar.setEqualsSetting(text);
+			if (grammar.setEqualsSetting(text)) {
 				System.out.println(grammar.getEqualsSetting());
 				okClicked = true;
 				editStage.close();

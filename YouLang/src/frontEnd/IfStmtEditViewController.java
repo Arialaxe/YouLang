@@ -85,8 +85,7 @@ public class IfStmtEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text1 = ifField.getText();
-			if (grammar.settingCheck(text1)) {
-				grammar.setIfSetting(text1);
+			if (grammar.setIfSetting(text1)) {
 				System.out.println(grammar.getIfSetting());
 				okClicked = true;
 				editStage.close();
@@ -96,8 +95,7 @@ public class IfStmtEditViewController {
 			}
 			
 			String text2 = thenField.getText();
-			if (grammar.settingCheck(text2)) {
-				grammar.setThenSetting(text2);
+			if (grammar.setThenSetting(text2)) {
 				System.out.println(grammar.getThenSetting());
 				okClicked = true;
 				editStage.close();
@@ -107,8 +105,7 @@ public class IfStmtEditViewController {
 			}
 			
 			String text3 = elseField.getText();
-			if (grammar.settingCheck(text3)) {
-				grammar.setElseSetting(text3);
+			if (grammar.setElseSetting(text3)) {
 				System.out.println(grammar.getElseSetting());
 				okClicked = true;
 				editStage.close();

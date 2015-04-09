@@ -53,8 +53,7 @@ public class PlusEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text = field.getText();
-			if (grammar.settingCheck(text)) {
-				grammar.setPlusOpSetting(text);
+			if (grammar.setPlusOpSetting(text)) {
 				System.out.println(grammar.getPlusOpSetting());
 				okClicked = true;
 				editStage.close();

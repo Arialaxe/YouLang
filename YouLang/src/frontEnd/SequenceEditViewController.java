@@ -53,8 +53,7 @@ public class SequenceEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text = field.getText();
-			if (grammar.settingCheck(text)) {
-				grammar.setSemiColonSetting(text);
+			if (grammar.setSemiColonSetting(text)) {
 				System.out.println(grammar.getSemiColonSetting());
 				okClicked = true;
 				editStage.close();

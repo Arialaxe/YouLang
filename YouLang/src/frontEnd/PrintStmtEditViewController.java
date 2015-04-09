@@ -53,8 +53,7 @@ public class PrintStmtEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text = field.getText();
-			if (grammar.settingCheck(text)) {
-				grammar.setPrintSetting(text);
+			if (grammar.setPrintSetting(text)) {
 				System.out.println(grammar.getPrintSetting());
 				okClicked = true;
 				editStage.close();

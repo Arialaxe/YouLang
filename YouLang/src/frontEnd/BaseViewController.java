@@ -191,8 +191,11 @@ public class BaseViewController {
 	
 	@FXML private void handleRun(){
 		try {
+			System.out.print(codeInput.getText());
 			SeqStmt runMe = mainApp.grammar.parse(codeInput.getText());
 			printed = runMe.eval(new LinkedList<String>());
+			//need to clear var list or it'll stick around
+			interpreter.VarList.clear();
 			//
 			String prev;
 			int j = printed.size();

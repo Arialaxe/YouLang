@@ -53,8 +53,7 @@ public class SubEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text = field.getText();
-			if (grammar.settingCheck(text)) {
-				grammar.setSubOpSetting(text);
+			if (grammar.setSubOpSetting(text)) {
 				System.out.println(grammar.getSubOpSetting());
 				okClicked = true;
 				editStage.close();

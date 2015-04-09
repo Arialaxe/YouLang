@@ -250,135 +250,180 @@ public class Grammar {
 		return plusOpSetting;
 	}
 
-	public void setPlusOpSetting(String plusOpSetting) {
-		if (settingCheck(plusOpSetting))
-		this.plusOpSetting = plusOpSetting;
+	public boolean setPlusOpSetting(String plusOpSetting) {
+		if (settingCheck(plusOpSetting)) {
+			this.plusOpSetting = plusOpSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getSubOpSetting() {
 		return subOpSetting;
 	}
 
-	public void setSubOpSetting(String subOpSetting) {
-		if (settingCheck(subOpSetting))
-		this.subOpSetting = subOpSetting;
+	public boolean setSubOpSetting(String subOpSetting) {
+		if (settingCheck(subOpSetting)) {
+			this.subOpSetting = subOpSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getMulOpSetting() {
 		return mulOpSetting;
 	}
 
-	public void setMulOpSetting(String mulOpSetting) {
-		if (settingCheck(mulOpSetting))
-		this.mulOpSetting = mulOpSetting;
+	public boolean setMulOpSetting(String mulOpSetting) {
+		if (settingCheck(mulOpSetting)) {
+			this.mulOpSetting = mulOpSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getDivOpSetting() {
 		return divOpSetting;
 	}
 
-	public void setDivOpSetting(String divOpSetting) {
-		if (settingCheck(divOpSetting))
-		this.divOpSetting = divOpSetting;
+	public boolean setDivOpSetting(String divOpSetting) {
+		if (settingCheck(divOpSetting)) {
+			this.divOpSetting = divOpSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getGreaterOpSetting() {
 		return greaterOpSetting;
 	}
 
-	public void setGreaterOpSetting(String greaterOpSetting) {
-		if (settingCheck(greaterOpSetting))
-		this.greaterOpSetting = greaterOpSetting;
+	public boolean setGreaterOpSetting(String greaterOpSetting) {
+		if (settingCheck(greaterOpSetting)) {
+			this.greaterOpSetting = greaterOpSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getEqualsSetting() {
 		return equalsSetting;
 	}
 
-	public void setEqualsSetting(String equalsSetting) {
-		if (settingCheck(equalsSetting))
-		this.equalsSetting = equalsSetting;
+	public boolean setEqualsSetting(String equalsSetting) {
+		if (settingCheck(equalsSetting)) {
+			this.equalsSetting = equalsSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getSemiColonSetting() {
 		return semiColonSetting;
 	}
 
-	public void setSemiColonSetting(String semiColonSetting) {
-		if (settingCheck(semiColonSetting))
-		this.semiColonSetting = semiColonSetting;
+	public boolean setSemiColonSetting(String semiColonSetting) {
+		if (settingCheck(semiColonSetting)) {
+			this.semiColonSetting = semiColonSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getLeftBracketSetting() {
 		return leftBracketSetting;
 	}
 
-	public void setLeftBracketSetting(String leftBracketSetting) {
-		if (settingCheck(leftBracketSetting))
-		this.leftBracketSetting = leftBracketSetting;
+	public boolean setLeftBracketSetting(String leftBracketSetting) {
+		if (settingCheck(leftBracketSetting)) {
+			this.leftBracketSetting = leftBracketSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getRightBracketSetting() {
 		return rightBracketSetting;
 	}
 
-	public void setRightBracketSetting(String rightBracketSetting) {
-		if (settingCheck(rightBracketSetting))
-		this.rightBracketSetting = rightBracketSetting;
+	public boolean setRightBracketSetting(String rightBracketSetting) {
+		if (settingCheck(rightBracketSetting)) {
+			this.rightBracketSetting = rightBracketSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getIfSetting() {
 		return ifSetting;
 	}
 
-	public void setIfSetting(String ifSetting) {
-		if (settingCheck(ifSetting))
-		this.ifSetting = ifSetting;
+	public boolean setIfSetting(String ifSetting) {
+		if (settingCheck(ifSetting)) {
+			this.ifSetting = ifSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getThenSetting() {
 		return thenSetting;
 	}
 
-	public void setThenSetting(String thenSetting) {
-		if (settingCheck(thenSetting))
-		this.thenSetting = thenSetting;
+	public boolean setThenSetting(String thenSetting) {
+		if (settingCheck(thenSetting)) {
+			this.thenSetting = thenSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getElseSetting() {
 		return elseSetting;
 	}
 
-	public void setElseSetting(String elseSetting) {
-		if (settingCheck(elseSetting))
-		this.elseSetting = elseSetting;
+	public boolean setElseSetting(String elseSetting) {
+		if (settingCheck(elseSetting)) {
+			this.elseSetting = elseSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getWhileSetting() {
 		return whileSetting;
 	}
 
-	public void setWhileSetting(String whileSetting) {
-		if (settingCheck(whileSetting))
-		this.whileSetting = whileSetting;
+	public boolean setWhileSetting(String whileSetting) {
+		if (settingCheck(whileSetting)) {
+			this.whileSetting = whileSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getDoSetting() {
 		return doSetting;
 	}
 
-	public void setDoSetting(String doSetting) {
-		if (settingCheck(doSetting))
-		this.doSetting = doSetting;
+	public boolean setDoSetting(String doSetting) {
+		if (settingCheck(doSetting)) {
+			this.doSetting = doSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public String getPrintSetting() {
 		return printSetting;
 	}
 
-	public void setPrintSetting(String printSetting) {
-		if (settingCheck(printSetting))
-		this.printSetting = printSetting;
+	public boolean setPrintSetting(String printSetting) {
+		if (settingCheck(printSetting)) {
+			this.printSetting = printSetting;
+			return true;
+		}
+		return false;
 	}
 
 	public IntNode getIntNode() {

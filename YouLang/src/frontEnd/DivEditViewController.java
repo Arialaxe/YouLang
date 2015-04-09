@@ -53,8 +53,7 @@ public class DivEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text = field.getText();
-			if (grammar.settingCheck(text)) {
-				grammar.setDivOpSetting(text);
+			if (grammar.setDivOpSetting(text)) {
 				System.out.println(grammar.getDivOpSetting());
 				okClicked = true;
 				editStage.close();

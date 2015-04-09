@@ -7,6 +7,8 @@ import interpreter.SeqStmt;
 import interpreter.VarAssignStmt;
 import interpreter.VarExp;
 
+import java.util.LinkedList;
+
 import org.codehaus.jparsec.Parser;
 
 public final class Sandbox { //makeshift test bench of sorts...
@@ -54,16 +56,22 @@ public final class Sandbox { //makeshift test bench of sorts...
 		
 		System.out.println("*****");
 		//SeqStmt stmt = grammar.parse("print 6");
-		SeqStmt stmt = grammar.parse("print foo; foo = 3; print foo; foo = 0; if foo then (print 2; print 3) else (print 4; print 5)");
-		//stmt.eval();
+		SeqStmt stmt = grammar.parse("print foo; \n foo = 3; \n print foo; \n foo = 0; \n if foo then (print 2; print 3) else (print 4; print 5)");
+		LinkedList<String> output = stmt.eval(new LinkedList<String>());
+		for (String s : output) {
+			System.out.println(s);
+		}
 		/*System.out.println(stmt.getClass().getName());
 		VarAssignStmt vs = (VarAssignStmt) stmt;
 		VarExp var = vs.getVar();
 		System.out.println("Var id: " + var.getID() + ", value: " + var.eval());*/
 		System.out.println("*****");
 		SeqStmt biznatchStmt = biznatch.parse("printthisbiznatch 6000 thendothisbiznatch printthisbiznatch yo 900 addthisbiznatch 400 mama");
-		//biznatchStmt.eval();
-		SeqStmt stmt2 = tester.parse("print (2 plus 2)");
+		output = biznatchStmt.eval(new LinkedList<String>());
+		for (String s : output) {
+			System.out.println(s);
+		}
+		//SeqStmt stmt2 = tester.parse("print (2 plus 2)");
 		//stmt2.eval();
 		
 		

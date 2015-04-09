@@ -53,8 +53,7 @@ public class MulEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text = field.getText();
-			if (grammar.settingCheck(text)) {
-				grammar.setMulOpSetting(text);
+			if (grammar.setMulOpSetting(text)) {
 				System.out.println(grammar.getMulOpSetting());
 				okClicked = true;
 				editStage.close();

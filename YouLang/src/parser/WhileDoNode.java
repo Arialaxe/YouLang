@@ -1,7 +1,6 @@
 package parser;
 
 import interpreter.SeqStmt;
-import interpreter.Stmt;
 import interpreter.WhileStmt;
 
 import org.codehaus.jparsec.Parser;

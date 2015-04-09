@@ -69,8 +69,7 @@ public class OpAppExpEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text1 = leftBracketField.getText();
-			if (grammar.settingCheck(text1)) {
-				grammar.setLeftBracketSetting(text1);
+			if (grammar.setLeftBracketSetting(text1)) {
 				System.out.println(grammar.getLeftBracketSetting());
 				okClicked = true;
 				editStage.close();
@@ -80,8 +79,7 @@ public class OpAppExpEditViewController {
 			}
 			
 			String text2 = rightBracketField.getText();
-			if (grammar.settingCheck(text2)) {
-				grammar.setRightBracketSetting(text2);
+			if (grammar.setRightBracketSetting(text2)) {
 				System.out.println(grammar.getRightBracketSetting());
 				okClicked = true;
 				editStage.close();

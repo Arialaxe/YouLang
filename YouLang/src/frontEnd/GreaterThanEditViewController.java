@@ -53,8 +53,7 @@ public class GreaterThanEditViewController {
 	@FXML private void handleOk(){
 		try {
 			String text = field.getText();
-			if (grammar.settingCheck(text)) {
-				grammar.setGreaterOpSetting(text);
+			if (grammar.setGreaterOpSetting(text)) {
 				System.out.println(grammar.getGreaterOpSetting());
 				okClicked = true;
 				editStage.close();
