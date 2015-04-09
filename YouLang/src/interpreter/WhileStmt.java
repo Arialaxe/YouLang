@@ -1,5 +1,6 @@
 package interpreter;
 
+import java.util.LinkedList;
 
 public class WhileStmt extends Stmt {
 
@@ -15,10 +16,11 @@ public class WhileStmt extends Stmt {
 	}
 	
 	@Override
-	public void eval(){ //TODO: make sure this actually works once you implement the printer
-		while (exp.eval() > 0) { //remember - C-style logic
-			stmt.eval();
+	public LinkedList<String> eval(LinkedList<String> output) { 
+		while (exp.eval() > 0) { 
+			stmt.eval(output);
 		}
+		return output;
 	}
 	
 	

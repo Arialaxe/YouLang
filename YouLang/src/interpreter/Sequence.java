@@ -1,5 +1,7 @@
 package interpreter;
 
+import java.util.LinkedList;
+
 public class Sequence extends Stmt {
 
 	private Stmt stmt1;
@@ -11,8 +13,9 @@ public class Sequence extends Stmt {
 	}
 	
 	@Override
-	public void eval(){
-		stmt1.eval();
-		stmt2.eval();
+	public LinkedList<String> eval(LinkedList<String> output){
+		stmt1.eval(output);
+		stmt2.eval(output);
+		return output;
 	}
 }

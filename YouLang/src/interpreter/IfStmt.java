@@ -1,5 +1,7 @@
 package interpreter;
 
+import java.util.LinkedList;
+
 public class IfStmt extends Stmt {
 
 	private Exp condition;
@@ -15,10 +17,11 @@ public class IfStmt extends Stmt {
 	}
 	
 	@Override 
-	public void eval(){
+	public LinkedList<String> eval(LinkedList<String> output){
 		if (condition.eval() > 0) {
-			ifTrue.eval();
+			ifTrue.eval(output);
 		}
-		else ifFalse.eval();
+		else ifFalse.eval(output);
+		return output;
 	}
 }

@@ -1,5 +1,7 @@
 package interpreter;
 
+import java.util.LinkedList;
+
 public class Tester {
 
 	public static void main (String args[]) {
@@ -12,6 +14,6 @@ public class Tester {
 		VarAssignStmt assign = new VarAssignStmt(var, null, new IntExp("3")); 
 		PrintStmt print = new PrintStmt(null, var);
 		Sequence seq = new Sequence(assign, null, print);
-		seq.eval();
+		seq.eval(new LinkedList<String>());
 	}
 }

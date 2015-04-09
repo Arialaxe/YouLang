@@ -1,5 +1,6 @@
 package interpreter;
 
+import java.util.LinkedList;
 import java.util.Vector;
 
 public class VarAssignStmt extends Stmt {
@@ -13,7 +14,7 @@ public class VarAssignStmt extends Stmt {
 	}
 	
 	@Override
-	public void eval(){
+	public LinkedList<String> eval(LinkedList<String> output){
 		if (!VarList.varInitFlag) {
 			VarList.varList = new Vector<VarExp>();
 			var.assign(exp.eval());
@@ -24,11 +25,12 @@ public class VarAssignStmt extends Stmt {
 			for (VarExp v : VarList.varList) {
 				if (v.getID().equals(var.getID())) {
 					v.assign(var.eval());
-					return;
+					return output;
 				}
 			}
 			VarList.varList.add(var);
 		}
+		return output;
 	}
 
 	public VarExp getVar() {

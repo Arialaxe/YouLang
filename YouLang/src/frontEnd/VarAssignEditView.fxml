@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="250.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontEnd.VarAssignEditViewController">
+   <children>
+      <SplitPane dividerPositions="0.717741935483871" orientation="VERTICAL" prefHeight="250.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="161.0" prefWidth="298.0">
+               <children>
+                  <Label layoutX="23.0" layoutY="79.0" text="Enter new value:" />
+                  <TextField fx:id="field" layoutX="122.0" layoutY="75.0" promptText="New value for =" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <HBox layoutX="89.0" layoutY="21.0">
+                     <children>
+                        <Button fx:id="ok" layoutX="89.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleOk" prefWidth="60.0" text="OK" />
+                        <Button fx:id="cancel" layoutX="149.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="60.0" text="Cancel" />
+                     </children>
+                  </HBox>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

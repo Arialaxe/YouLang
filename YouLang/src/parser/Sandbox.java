@@ -133,7 +133,7 @@ public final class Sandbox { //makeshift test bench of sorts...
 		System.out.println("Parser made");
 		VarAssignStmt foo = p.parse(s);
 		System.out.println("String parsed");
-		foo.eval();
+		foo.eval(new LinkedList());
 		System.out.println("Assignment evaluated");
 		VarExp bar = foo.getVar();
 		System.out.println("VarExp extracted");

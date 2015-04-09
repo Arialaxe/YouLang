@@ -30,5 +30,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Niall Rutherford/Documents/CSTII/Individual Project/controlsfx-8.20.8/controlsfx-8.20.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Niall Rutherford/Documents/CSTII/Individual Project/controlsfx-8.20.8/controlsfx-samples-8.20.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Niall Rutherford/Documents/CSTII/Individual Project/controlsfx-8.20.8/fxsampler-1.0.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Niall Rutherford/Documents/CSTII/Individual Project/controlsfx-8.20.8/openjfx-dialogs-1.0.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

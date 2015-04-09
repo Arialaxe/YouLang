@@ -39,7 +39,5 @@ public class SeqStmtNode extends Node {
 		this.stmtRef = stmtRef;
 	}
 	*/
-	
-	
 
 }

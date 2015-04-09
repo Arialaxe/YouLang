@@ -1,5 +1,7 @@
 package interpreter;
 
+import java.util.LinkedList;
+
 public class PrintStmt extends Stmt {
 
 	private Exp exp;
@@ -9,8 +11,8 @@ public class PrintStmt extends Stmt {
 	}
 	
 	@Override
-	public void eval() {
-		//decoupled - sent to method in interface package - we don't do it here!
-		frontEnd.Printer.printOutput(Integer.toString(exp.eval()));
+	public LinkedList<String> eval(LinkedList<String> output) {
+		output.add(Integer.toString(exp.eval()));
+		return output;
 	}
 }

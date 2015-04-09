@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.5203488372093024" orientation="VERTICAL" prefHeight="650.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontEnd.BaseViewController">
+   <items>
+      <TitledPane collapsible="false" prefWidth="700.0" text="YouLang" textAlignment="CENTER" textFill="#6d6d6f">
+         <content>
+            <TabPane tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab closable="false" text="Build ">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <Label layoutX="128.0" layoutY="20.0" text="op ::=" />
+                              <HBox layoutX="170.0" layoutY="14.0">
+                                 <children>
+                                    <VBox layoutX="115.0" layoutY="81.0">
+                                       <children>
+                                          <TextField fx:id="plus" editable="false" layoutX="115.0" layoutY="81.0" prefHeight="25.0" prefWidth="69.0" text="+" />
+                                          <Button fx:id="plusEdit" layoutX="115.0" layoutY="106.0" mnemonicParsing="false" onAction="#handlePlusEdit" prefHeight="25.0" prefWidth="69.0" text="Edit" />
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="184.0" layoutY="81.0">
+                                       <children>
+                                          <TextField fx:id="sub" editable="false" layoutX="115.0" layoutY="81.0" prefHeight="25.0" prefWidth="69.0" text="-" />
+                                          <Button fx:id="subEdit" layoutX="115.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleSubEdit" prefHeight="25.0" prefWidth="69.0" text="Edit" />
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="253.0" layoutY="81.0">
+                                       <children>
+                                          <TextField fx:id="mul" editable="false" layoutX="115.0" layoutY="81.0" prefHeight="25.0" prefWidth="69.0" text="*" />
+                                          <Button fx:id="mulEdit" layoutX="115.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleMulEdit" prefHeight="25.0" prefWidth="69.0" text="Edit" />
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="322.0" layoutY="81.0">
+                                       <children>
+                                          <TextField fx:id="div" editable="false" layoutX="115.0" layoutY="81.0" prefHeight="25.0" prefWidth="69.0" text="/" />
+                                          <Button fx:id="divEdit" layoutX="115.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleDivEdit" prefHeight="25.0" prefWidth="69.0" text="Edit" />
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="391.0" layoutY="81.0">
+                                       <children>
+                                          <TextField fx:id="greaterThan" editable="false" layoutX="115.0" layoutY="81.0" prefHeight="25.0" prefWidth="69.0" text="&gt;" />
+                                          <Button fx:id="greaterThanEdit" layoutX="115.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleGreaterThanEdit" prefHeight="25.0" prefWidth="69.0" text="Edit" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Label layoutX="178.0" layoutY="86.0" text="exp ::=" />
+                              <VBox layoutX="224.0" layoutY="79.0">
+                                 <children>
+                                    <HBox layoutX="99.0" layoutY="72.0">
+                                       <children>
+                                          <TextField editable="false" layoutX="99.0" layoutY="72.0" prefHeight="25.0" prefWidth="69.0" text="int" />
+                                          <TextField editable="false" layoutX="168.0" layoutY="72.0" prefHeight="25.0" prefWidth="69.0" text="var" />
+                                          <TextField fx:id="opAppExp" editable="false" layoutX="237.0" layoutY="72.0" prefHeight="27.0" prefWidth="103.0" text="(exp op exp)" />
+                                       </children>
+                                    </HBox>
+                                    <Pane>
+                                       <children>
+                                          <Button fx:id="opAppExpEdit" layoutX="138.0" mnemonicParsing="false" onAction="#handleOpAppExpEdit" prefHeight="27.0" prefWidth="102.0" text="Edit" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                              <Label layoutX="6.0" layoutY="146.0" text="stmt ::=" />
+                              <VBox layoutX="56.0" layoutY="140.0">
+                                 <children>
+                                    <HBox layoutX="99.0" layoutY="130.0">
+                                       <children>
+                                          <TextField fx:id="varAssign" editable="false" layoutX="99.0" layoutY="130.0" prefHeight="27.0" prefWidth="88.0" text="var = exp" />
+                                          <TextField fx:id="ifStmt" editable="false" layoutX="244.0" layoutY="130.0" prefHeight="27.0" prefWidth="275.0" text="if exp then ( seqStmt ) else ( seqStmt )" />
+                                          <TextField fx:id="whileStmt" editable="false" layoutX="401.0" layoutY="130.0" prefHeight="27.0" prefWidth="188.0" text="while exp do ( seqStmt )" />
+                                          <TextField fx:id="printStmt" editable="false" layoutX="520.0" layoutY="130.0" prefHeight="27.0" prefWidth="81.0" text="print exp" />
+                                       </children>
+                                    </HBox>
+                                    <Pane layoutX="99.0" layoutY="157.0">
+                                       <children>
+                                          <Button fx:id="ifStmtEdit" layoutX="88.0" mnemonicParsing="false" onAction="#handleIfStmtEdit" prefHeight="27.0" prefWidth="275.0" text="Edit" />
+                                          <Button fx:id="whileStmtEdit" layoutX="363.0" mnemonicParsing="false" onAction="#handleWhileStmtEdit" prefHeight="27.0" prefWidth="188.0" text="Edit" />
+                                          <Button fx:id="printStmtEdit" layoutX="551.0" mnemonicParsing="false" onAction="#handlePrintStmtEdit" prefHeight="27.0" prefWidth="81.0" text="Edit" />
+                                          <Button fx:id="varAssignEdit" mnemonicParsing="false" onAction="#handleVarAssignEdit" prefHeight="27.0" prefWidth="88.0" text="Edit" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                              <Label layoutX="203.0" layoutY="209.0" text="seqStmt ::=" />
+                              <VBox layoutX="271.0" layoutY="203.0">
+                                 <children>
+                                    <HBox layoutX="98.0" layoutY="177.0">
+                                       <children>
+                                          <TextField fx:id="sequence" editable="false" layoutX="98.0" layoutY="177.0" prefHeight="27.0" prefWidth="118.0" text="stmt ; seqStmt" />
+                                          <TextField editable="false" layoutX="196.0" layoutY="177.0" prefHeight="27.0" prefWidth="47.0" text="stmt" />
+                                       </children>
+                                    </HBox>
+                                    <Pane layoutX="98.0" layoutY="204.0">
+                                       <children>
+                                          <Button fx:id="sequenceEdit" mnemonicParsing="false" onAction="#handleSequenceEdit" prefHeight="27.0" prefWidth="119.0" text="Edit" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                              <Button fx:id="reset" layoutX="604.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleReset" prefHeight="27.0" prefWidth="85.0" text="Reset" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Help">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="353.0" prefWidth="703.0" />
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </content>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TitledPane>
+      <SplitPane dividerPositions="0.5" prefHeight="326.0" prefWidth="705.0">
+         <items>
+            <VBox prefHeight="330.0" prefWidth="350.0">
+               <children>
+                  <ScrollPane prefViewportHeight="279.0" prefViewportWidth="348.0">
+                     <content>
+                        <TextArea fx:id="codeInput" layoutX="14.0" layoutY="14.0" prefHeight="294.0" prefWidth="347.0">
+                           <font>
+                              <Font name="Courier New" size="12.0" />
+                           </font></TextArea>
+                     </content>
+                  </ScrollPane>
+                  <AnchorPane prefHeight="27.0" prefWidth="342.0">
+                     <children>
+                        <Button fx:id="run" layoutX="281.0" mnemonicParsing="false" onAction="#handleRun" prefHeight="25.0" prefWidth="69.0" text="Run" />
+                        <Label layoutX="9.0" layoutY="4.0" text="Code" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <ScrollPane prefViewportHeight="279.0" prefViewportWidth="348.0">
+                     <content>
+                        <TextArea fx:id="console" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="283.0" prefWidth="342.0">
+                           <font>
+                              <Font name="Courier New" size="12.0" />
+                           </font></TextArea>
+                     </content>
+                  </ScrollPane>
+                  <AnchorPane prefHeight="0.0" prefWidth="349.0">
+                     <children>
+                        <Button fx:id="clear" layoutX="280.0" mnemonicParsing="false" onAction="#handleClear" prefHeight="25.0" prefWidth="69.0" text="Clear" />
+                        <Label layoutX="8.0" layoutY="4.0" text="Output" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </items>
+      </SplitPane>
+   </items>
+</SplitPane>

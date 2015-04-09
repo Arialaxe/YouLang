@@ -1,8 +1,8 @@
 package interpreter;
 
-import java.util.Vector;
+import java.util.LinkedList;
 
 public abstract class SeqStmt {
 
-	public abstract void eval(); //placeholder
+	public abstract LinkedList<String> eval(LinkedList<String> output); //placeholder
 }
