@@ -2,9 +2,9 @@ package parser;
 
 import interpreter.SeqStmt;
 
-import java.util.HashMap;
-
 import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.error.ParseErrorDetails;
+import org.codehaus.jparsec.error.ParserException;
 
 public class Grammar {
 	
@@ -43,7 +43,7 @@ public class Grammar {
 	private PrintNode printNode = new PrintNode(this);
 	
 	private RootExp expNode;
-	private SeqStmtNode seqStmtNode;
+	private RootSeqStmt seqStmtNode;
 	private RootStmt stmtNode;
 	private RootOp opNode;
 	
@@ -57,7 +57,7 @@ public class Grammar {
 
 	public SeqStmt parse (String stringToParse) {
 		expNode = new RootExp(this, intNode, varNode, opAppNode);
-		seqStmtNode = new SeqStmtNode(this, sequenceNode);
+		seqStmtNode = new RootSeqStmt(this, sequenceNode);
 		stmtNode = new RootStmt(this, varAssignNode, ifThenElseNode, whileDoNode, printStmtNode);
 		seqStmtNode.setStmtNode(stmtNode);
 		
@@ -79,23 +79,45 @@ public class Grammar {
 		
 		Parser<SeqStmt> parser = seqStmtNode.parser();
 		//seqStmtRef.set(parser);
-		return parser.parse(stringToParse);
+		try {
+			return parser.parse(stringToParse);
+		}
+		catch (ParserException e) {
+			throw e; //makes unit testing easier to do this...
+		}
+		catch (NullPointerException e) {
+			System.err.println("You didn't provide any code...");
+			return null;
+		}
 	}
 	
 	public Boolean settingCheck (String setting) { 
-		//if it contains whitespace/is empty
+		//if it contains whitespace/is empty/is null
+		if (setting == null) return false;
 		if (setting.contains(" ")) return false;
 		if (setting.equals("")) return false;
 		
-		//if it contains any settings already
-		if (setting.contains(plusOpSetting) || setting.contains(subOpSetting) || 
-			setting.contains(mulOpSetting) || setting.contains(divOpSetting) || 
-			setting.contains(greaterOpSetting) || setting.contains(equalsSetting) ||
-			setting.contains(semiColonSetting) || setting.contains(leftBracketSetting) ||
-			setting.contains(rightBracketSetting) || setting.contains(ifSetting) ||
-			setting.contains(thenSetting) || setting.contains(elseSetting) ||
-			setting.contains(whileSetting) || setting.contains(doSetting) ||
-			setting.contains(printSetting)) {
+		//if the string is prefixed by any settings already
+		if (setting.startsWith(plusOpSetting) || setting.startsWith(subOpSetting) || 
+			setting.startsWith(mulOpSetting) || setting.startsWith(divOpSetting) || 
+			setting.startsWith(greaterOpSetting) || setting.startsWith(equalsSetting) ||
+			setting.startsWith(semiColonSetting) || setting.startsWith(leftBracketSetting) ||
+			setting.startsWith(rightBracketSetting) || setting.startsWith(ifSetting) ||
+			setting.startsWith(thenSetting) || setting.startsWith(elseSetting) ||
+			setting.startsWith(whileSetting) || setting.startsWith(doSetting) ||
+			setting.startsWith(printSetting)) {
+			return false;
+		}
+	
+		//if any other setting starts with it
+		if (plusOpSetting.startsWith(setting) || subOpSetting.startsWith(setting) || 
+			mulOpSetting.startsWith(setting) || divOpSetting.startsWith(setting) || 
+			greaterOpSetting.startsWith(setting) || equalsSetting.startsWith(setting) ||
+			semiColonSetting.startsWith(setting) || leftBracketSetting.startsWith(setting) ||
+			rightBracketSetting.startsWith(setting) || ifSetting.startsWith(setting) ||
+			thenSetting.startsWith(setting) || elseSetting.startsWith(setting) ||
+			whileSetting.startsWith(setting) || doSetting.startsWith(setting) ||
+			printSetting.startsWith(setting)) {
 			return false;
 		}
 		
@@ -498,7 +520,7 @@ public class Grammar {
 		return expNode;
 	}
 
-	public SeqStmtNode getSeqStmtNode() {
+	public RootSeqStmt getSeqStmtNode() {
 		return seqStmtNode;
 	}
 

@@ -14,6 +14,7 @@ public class Tester {
 		VarAssignStmt assign = new VarAssignStmt(var, null, new IntExp("3")); 
 		PrintStmt print = new PrintStmt(null, var);
 		Sequence seq = new Sequence(assign, null, print);
-		seq.eval(new LinkedList<String>());
+		LinkedList<String> output = seq.eval(new LinkedList<String>());
+		for (String s : output) System.out.println(s);
 	}
 }

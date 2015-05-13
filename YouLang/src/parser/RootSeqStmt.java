@@ -6,13 +6,13 @@ import interpreter.Stmt;
 import org.codehaus.jparsec.Parser;
 import org.codehaus.jparsec.Parsers;
 
-public class SeqStmtNode extends Node {
+public class RootSeqStmt extends Node {
 	
 	SequenceNode sequenceNode;
 	//Parser.Reference<Stmt> stmtRef;
 	RootStmt stmtNode;
 
-	public SeqStmtNode(Grammar newParent, SequenceNode sequenceNode) {
+	public RootSeqStmt(Grammar newParent, SequenceNode sequenceNode) {
 		super(newParent);
 		this.sequenceNode = sequenceNode;
 	}
@@ -23,9 +23,8 @@ public class SeqStmtNode extends Node {
 		sequenceNode.setSeqStmtRef(seqStmtRef);
 		sequenceNode.setStmtNode(stmtNode);
 		stmtNode.setSeqStmtRef(seqStmtRef);
-		//sequenceNode.setStmtRef(stmtRef);
-		//Parser<SeqStmt> result = Parsers.or(sequenceNode.parser(), stmtRef.lazy()).cast();
-		Parser<SeqStmt> result = Parsers.or(sequenceNode.parser(), stmtNode.parser()).cast();
+		Parser<SeqStmt> result = Parsers.or(sequenceNode.parser(), Parsers.always().retn(new interpreter.Epsilon()).cast()).cast();
+		//didn't use "many()" - easier to map to interpreter class this way
 		seqStmtRef.set(result);
 		return result;
 	}

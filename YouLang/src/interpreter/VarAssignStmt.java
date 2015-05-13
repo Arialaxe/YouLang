@@ -28,6 +28,7 @@ public class VarAssignStmt extends Stmt {
 					return output;
 				}
 			}
+			var.assign(exp.eval());
 			VarList.varList.add(var);
 		}
 		return output;

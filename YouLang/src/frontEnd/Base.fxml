@@ -100,7 +100,7 @@
                                     <HBox layoutX="98.0" layoutY="177.0">
                                        <children>
                                           <TextField fx:id="sequence" editable="false" layoutX="98.0" layoutY="177.0" prefHeight="27.0" prefWidth="118.0" text="stmt ; seqStmt" />
-                                          <TextField editable="false" layoutX="196.0" layoutY="177.0" prefHeight="27.0" prefWidth="47.0" text="stmt" />
+                                          <TextField editable="false" layoutX="196.0" layoutY="177.0" prefHeight="27.0" prefWidth="63.0" text="epsilon" />
                                        </children>
                                     </HBox>
                                     <Pane layoutX="98.0" layoutY="204.0">
@@ -117,7 +117,24 @@
                   </Tab>
                   <Tab closable="false" text="Help">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="353.0" prefWidth="703.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="353.0" prefWidth="703.0">
+                           <children>
+                              <TextFlow layoutX="24.0" layoutY="52.0" prefHeight="41.0" prefWidth="655.0" textAlignment="JUSTIFY">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The top half provides an interface for editing the grammar; the bottom half provides a code writing field on the left and an output console on the right. " wrappingWidth="705.0006103515625" />
+                                 </children>
+                              </TextFlow>
+                              <TextFlow layoutX="24.0" layoutY="115.0" prefHeight="41.0" prefWidth="656.0" textAlignment="JUSTIFY">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Each Edit button allows you to edit the terminals in that production. The fields are distinguished through prompt text indicating the default setting for the terminal. Your changes will then show up in the text fields displaying the grammar." wrappingWidth="668.000244140625" />
+                                 </children>
+                              </TextFlow>
+                              <TextFlow layoutX="24.0" layoutY="181.0" prefHeight="41.0" prefWidth="656.0" textAlignment="JUSTIFY">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The reset button sets the grammar back to default settings." wrappingWidth="668.000244140625" />
+                                 </children>
+                              </TextFlow>
+                           </children></AnchorPane>
                      </content>
                   </Tab>
                </tabs>

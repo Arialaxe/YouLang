@@ -10,6 +10,7 @@ import interpreter.VarExp;
 import java.util.LinkedList;
 
 import org.codehaus.jparsec.Parser;
+import org.codehaus.jparsec.error.ParserException;
 
 public final class Sandbox { //makeshift test bench of sorts...
 
@@ -87,13 +88,18 @@ public final class Sandbox { //makeshift test bench of sorts...
 	
 
 	public static void testInt(String s) {
-		System.out.println("***TESTING INT PARSER***");
-		Parser<IntExp> p = new IntNode(new Grammar()).parser();
-		System.out.println("Parser made");
-		IntExp foo = p.parse(s);
-		System.out.println("String parsed");
-		System.out.println("Return value: " + foo.eval());
-	
+		try {
+			System.out.println("***TESTING INT PARSER***");
+			Parser<IntExp> p = new IntNode(new Grammar()).parser();
+			System.out.println("Parser made");
+			IntExp foo = p.parse(s);
+			System.out.println("String parsed");
+			System.out.println("Return value: " + foo.eval());
+		}
+		catch (ParserException e) {
+			e.printStackTrace();
+			System.err.println(e.getErrorDetails().getFailureMessage());
+		}
 	}
 
 

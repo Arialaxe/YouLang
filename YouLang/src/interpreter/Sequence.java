@@ -2,7 +2,7 @@ package interpreter;
 
 import java.util.LinkedList;
 
-public class Sequence extends Stmt {
+public class Sequence extends SeqStmt {
 
 	private Stmt stmt1;
 	private SeqStmt stmt2;

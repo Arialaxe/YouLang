@@ -18,7 +18,7 @@
                <children>
                   <HBox layoutX="89.0" layoutY="21.0">
                      <children>
-                        <Button fx:id="ok" layoutX="89.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="60.0" text="OK" />
+                        <Button fx:id="ok" layoutX="89.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleOk" prefWidth="60.0" text="OK" />
                         <Button fx:id="cancel" layoutX="149.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="60.0" text="Cancel" />
                      </children>
                   </HBox>

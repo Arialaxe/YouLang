@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import org.codehaus.jparsec.error.ParserException;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
@@ -208,9 +209,10 @@ public class BaseViewController {
 				console.setText(prev.concat("\n" + printed.removeFirst()));
 			}
 		}
-		catch (Exception e) {
-			//System.err.println("Marker!");
-			e.printStackTrace();
+		catch (ParserException e) {
+			console.setText("Your code didn't parse! \nCheck for any mistakes and try again. \n \nError message: " + 
+								e.getMessage() + "\nFailed at token " + e.getErrorDetails().getEncountered() + ", \nat character " +
+								e.getErrorDetails().getIndex()+ " in the code.");
 		}
 	}
 	

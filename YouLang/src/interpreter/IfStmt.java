@@ -5,11 +5,11 @@ import java.util.LinkedList;
 public class IfStmt extends Stmt {
 
 	private Exp condition;
-	private Stmt ifTrue;
-	private Stmt ifFalse;
+	private SeqStmt ifTrue;
+	private SeqStmt ifFalse;
 	
-	public IfStmt (String ifRetn, Exp expRetn, String thenRetn, String leftBracketRetn, Stmt thenStmtRetn, 
-			String rightBracketRetn, String elseRetn, String leftBracketRetn2, Stmt elseStmtRetn,
+	public IfStmt (String ifRetn, Exp expRetn, String thenRetn, String leftBracketRetn, SeqStmt thenStmtRetn, 
+			String rightBracketRetn, String elseRetn, String leftBracketRetn2, SeqStmt elseStmtRetn,
 			String rightBracketRetn2) {
 		this.condition = expRetn;
 		this.ifTrue = thenStmtRetn;
